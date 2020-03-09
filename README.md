@@ -26,3 +26,7 @@
 5. Határidő
 
     2020.05.11
+    
+### Általános követelmények
+
+
