@@ -29,4 +29,8 @@
     
 ### Általános követelmények
 
+TODO
 
+### Specifikus követelmények
+
+TODO
