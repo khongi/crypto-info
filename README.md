@@ -116,3 +116,11 @@ Következő adatokat kell megjeleníteni:
 ## Use Case
 
 ![UseCase](/docs/images/diagrams/use-case.png)
+
+## User Story-k
+
+- A felhasználó az oldalsó menüből a lista opciót választva, megjeleníti a lista nézetet
+- A felhasználó az oldalsó menüből a rólunk opciót választva, megjeleníti a rólunk nézetet
+- A felhasználó a lista oldalon, a keresés ikonra kattintva, szűkíti a találatokat
+- A felhasználó a lista oldalon, pull-to-refresh mozdulattal, frissíti a listát
+- A felhasználó a részletek oldalon, pull-to-refresh mozdulattal, frissíti a részletek oldalt
