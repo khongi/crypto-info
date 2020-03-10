@@ -124,3 +124,4 @@ Következő adatokat kell megjeleníteni:
 - A felhasználó a lista oldalon, a keresés ikonra kattintva, szűkíti a találatokat
 - A felhasználó a lista oldalon, pull-to-refresh mozdulattal, frissíti a listát
 - A felhasználó a részletek oldalon, pull-to-refresh mozdulattal, frissíti a részletek oldalt
+- A felhasználó a lista oldalon, lista elemre kattintva, átnavigál a részletek oldalra
