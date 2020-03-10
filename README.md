@@ -61,6 +61,10 @@ Kommunikáció, akár több crypto API-val
 - Ingyenes API kulcsokkal, nincs https
 - UI tesztek futtatásához mock webserver
 
+#### Nyelv
+
+Az alkalmazás angol nyelven készül.
+
 ### Specifikus követelmények
 
 #### Képernyők
@@ -85,7 +89,7 @@ Minimálisan a következőket kell tartalmaznia:
 Listaelemnek tartalmaznia kell:
 - Név
 - Ikon
-- Aktuális átlag ár HUF-ban
+- Aktuális átlag ár USD-ban
 - Rank
 
 #### Részletek
@@ -96,9 +100,9 @@ Következő adatokat kell megjeleníteni:
 - Rövidítés
 - Név
 - Ikon
-- Átlag ár HUF-ban
-- 24 órás legalacsonyabb ár HUF-ban
-- 24 órás legmagasabb ár HUF-ban
+- Átlag ár USD-ban
+- 24 órás legalacsonyabb ár USD-ban
+- 24 órás legmagasabb ár USD-ban
 - Legutóbbi 1 órás különbség százalékban
 - Legutóbbi 24 órás különbség százalékban
 - Legutóbbi 7 napos különbség százalékban
