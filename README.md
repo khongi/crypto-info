@@ -15,7 +15,7 @@ Egy egyszerű Android alkalmazás, amely kriptovaluták árfolyamairól tud info
     
 #### Platform
     
-- Natív Android
+- Natív Android (Kotlin)
 - Min API 21
     
 #### Design
