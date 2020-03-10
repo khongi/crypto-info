@@ -63,4 +63,13 @@ Kommunikáció, akár több crypto API-val
 
 ### Specifikus követelmények
 
-TODO
+#### Képernyők
+
+3 darab képernyőből áll az alkalmazás:
+- Lista
+- Részletek
+- Rólunk
+
+#### Navigáció
+
+Lista és a Rólunk oldal között lehet navigálni oldalsó menüvel (navigation drawer). Lista oldalon egy elemre kattintva átnavigál a Részletekre, ahonnan csak vissza navigáció lehetséges a Lista oldalra.
