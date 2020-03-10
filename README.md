@@ -112,3 +112,7 @@ Következő adatokat kell megjeleníteni:
 - Leírás az alkalmazásról
 - Szoftver licensze
 - Fejlesző
+
+## Use Case
+
+![UseCase](/docs/images/diagrams/use-case.png)
