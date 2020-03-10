@@ -73,3 +73,38 @@ Kommunikáció, akár több crypto API-val
 #### Navigáció
 
 Lista és a Rólunk oldal között lehet navigálni oldalsó menüvel (navigation drawer). Lista oldalon egy elemre kattintva átnavigál a Részletekre, ahonnan csak vissza navigáció lehetséges a Lista oldalra.
+
+#### Lista
+
+Kilistázza a kriptovalutákat.
+
+Minimálisan a következőket kell tartalmaznia:
+- Pull to refresh
+- Keresés a listaelemek között, rövidítés alapján.
+
+Listaelemnek tartalmaznia kell:
+- Név
+- Ikon
+- Aktuális átlag ár HUF-ban
+- Rank
+
+#### Részletek
+
+Egy adott kriptovalutának az adatait jeleníti meg.
+
+Következő adatokat kell megjeleníteni:
+- Rövidítés
+- Név
+- Ikon
+- Átlag ár HUF-ban
+- 24 órás legalacsonyabb ár HUF-ban
+- 24 órás legmagasabb ár HUF-ban
+- Legutóbbi 1 órás különbség százalékban
+- Legutóbbi 24 órás különbség százalékban
+- Legutóbbi 7 napos különbség százalékban
+
+#### Rólunk
+
+- Leírás az alkalmazásról
+- Szoftver licensze
+- Fejlesző
