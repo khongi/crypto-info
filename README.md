@@ -33,17 +33,17 @@ Nincs előre megadott design
 
 **Content wireframe**
 
-![Drawer](/docs/images/content/Drawer.png)
-![List](/docs/images/content/List.png)
-![Details](/docs/images/content/Details.png)
-![About](/docs/images/content/About.png)
+![Drawer](/docs/images/content_framed/Drawer.png)
+![List](/docs/images/content_framed/List.png)
+![Details](/docs/images/content_framed/Details.png)
+![About](/docs/images/content_framed/About.png)
 
 **Lo-Fi wireframe**
 
-![Drawer](/docs/images/lo-fi/Drawer.png)
-![List](/docs/images/lo-fi/List.png)
-![Details](/docs/images/lo-fi/Detail.png)
-![About](/docs/images/lo-fi/About.png)
+![Drawer](/docs/images/lo-fi_framed/Drawer.png)
+![List](/docs/images/lo-fi_framed/List.png)
+![Details](/docs/images/lo-fi_framed/Details.png)
+![About](/docs/images/lo-fi_framed/About.png)
     
 #### Eszköz típus
 
