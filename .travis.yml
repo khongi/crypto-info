@@ -5,6 +5,11 @@ env:
   global:
     - ANDROID_API_LEVEL=29
     - ANDROID_BUILD_TOOLS_VERSION=29.0.2
+addons:
+  sonarcloud:
+    organization: "khongi"
+    token:
+      secure: "q1HSGy9C3cHBnePlQt0BquDC3tohIzlHMoZFboZkgwzCG5gLInwlqRYzoEJLoGZeAiCu7/kMU/iF7IETVEGKakF1DZnlLA471nxkegpKXvimLPBpv57UZ53LDp7m4oJkyF91Qob93Db32roe+yPIJ8ihZOPCHWB3O3SNhPxkXRg4sxLDK4vwrmhMa2ORU58wCGzoud9iB8L87tamLVuLX+fP5x1T9JLLMt/s3JMUvcUQ6Hbayqt6UVqiW8Trldi7iArG8965A2yh8YSkmL2gWgPicBd0hM0BUnrl4nqG7GEFblLus3FT1b2AYADqJHJ7TbWpbBLGRrctjXfaOnSFdJC7hxKwxXImBmy7yPhcJZTK54JJCmT3eJtq+WzgPbvlJhFOwLUQsOTXEX5M/LJFIPIIv0V8FzXimXG2KdVVgOeeoYVQlq5+s+U2zmhkmpo3yNvvcVucCGVfg53opR43M0inYP9OAeu6qjI0eEmnJ32f8/bUfHuDyLaO9OPUrhiUFuURGksI7OpVl719zKbRf1+SPHqExpH6NrVzgmS4FJKsiU6kGYkkM+JgeSgcomNdJJ5JDdgje4HQMRHZ6jnFNeFKlbpLHE3d60POq9CQFmCpLXD3xMSMllYTtxTDQR6P/UKcGOsiYS67G6H/JUgL9yuqweM5ztXOrT1oRgDcnUw="
 android:
   components:
     - tools
@@ -27,6 +32,7 @@ licenses:
   - '.+'
 script:
   - ./gradlew build check
+  - sonar-scanner
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
   - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
