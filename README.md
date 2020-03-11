@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/khongi/crypto-info.svg?branch=development)](https://travis-ci.com/khongi/crypto-info)
+
 ## Specifikáció
 
 ### Bevezetés
@@ -12,21 +14,21 @@ Egy egyszerű Android alkalmazás, amely kriptovaluták árfolyamairól tud info
 - API hívás
 - Helyi DB
 - ORM
-    
+
 #### Platform
-    
+
 - Natív Android (Kotlin)
 - Min API 21
-    
+
 #### Design
 
 Justinmind wireframe ábrák (content + lo-fi).
 Nincs előre megadott design
-    
+
 #### Határidő
 
 2020.05.11
-    
+
 ### Általános követelmények
 
 #### Képernyőtervek
@@ -44,15 +46,15 @@ Nincs előre megadott design
 ![List](/docs/images/lo-fi_framed/List.png)
 ![Details](/docs/images/lo-fi_framed/Details.png)
 ![About](/docs/images/lo-fi_framed/About.png)
-    
+
 #### Eszköz típus
 
 Telefon, álló
-    
+
 #### Online/Offline
 
 Támogasson offline működést, amennyiben nincs hálózat és már volt korábban betöltött adat.
-    
+
 #### Backend
 
 Kommunikáció, akár több crypto API-val
