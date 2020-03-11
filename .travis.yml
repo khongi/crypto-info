@@ -23,11 +23,8 @@ android:
     # if you need to run emulator(s) during your tests
     # - sys-img-x86-android-29
 licenses:
-#  - 'android-sdk-preview-license-.+'
-#  - 'android-sdk-license-.+'
-#  - 'google-gdk-license-.+'
-    # White list all the licenses.
-    - '.+'
+  # White list all the licenses.
+  - '.+'
 script:
   - ./gradlew build check
 before_cache:
@@ -38,3 +35,7 @@ cache:
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
     - $HOME/.android/build-cache
+notifications:
+  email: false
+  slack:
+    secure: SCIgkPVO2/GQzbS2oLayYeTllr+kmhc/UsaBHD0fIoFMhDAhelZJlLiA8p1+whtZxYxCboph4W1QLkrM0wLPDpwFGLINxStoPM5mGrDzggTUkGIOTn9T20v3fqU8KFrCUK43EoBdEEV6gGxCMyZUrLwJJmFc9s9FZpKrBulTu3D7PQOy3q1wxFyCwyvd4Jx/Bdgp4hpufGDyjpFzO4R67zNWoXeZZrF0aWxvH+fHU8ffVV8KecXHKzCZ3ciD2/x2Wc6LafXjTAUqQRkfOG+N/Zfa9VhPlOJbWCdo6FvBWemNm0r2znzfsNncNPRwVScXk5mepNWnSGYXx/7p5oIGVMQdSD6LL0O6kBd3BWVVa6RzIab9y2TsomEmLDXjdHGZipgIj5Sg2BpRxa6ckrM6fPoaWmKFSYYYTwYYsndEIGMOGrw9mVq74r9uOv/r3SLEqcucVv0gT9uyBmc1SUPd+5jHCYV7FRoCz09kUmCck8Q0yXyM1GzWPDShMBtTuZLtJS2hPgYylj6jcPWGUSWYHRQ3qsXS1sGS4Sh7vYrr/P8vNP6x8I/F1DAeaMdcSRhUWgbj4OaJF1sIksg2BdzBknz9iEIig/EEl9Z7c3yLCDn47qbwTY1F+qsN4X+nrVFjLZClQ2RJksIjRBFpCS8nRFJtJan/jAoWjgIaY9dEl5E=
