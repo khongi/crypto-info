@@ -6,6 +6,7 @@ import javax.inject.Inject
 class CoinInteractor @Inject constructor() {
 
     companion object {
+        // TODO get data from data layer
         private val COINS = listOf(DomainCoin(0), DomainCoin(1))
     }
 
