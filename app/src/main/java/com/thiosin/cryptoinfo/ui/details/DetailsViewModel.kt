@@ -8,7 +8,8 @@ class DetailsViewModel @Inject constructor(
 ) : JobViewModel<DetailsViewState>(Loading) {
 
     fun load() = execute {
-        viewState = DetailsReady(detailsPresenter.getData())
+        // TODO get arguments from safeargs
+        viewState = DetailsReady(detailsPresenter.getCoin(0))
     }
 
 }

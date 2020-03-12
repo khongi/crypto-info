@@ -4,4 +4,4 @@ sealed class ListViewState
 
 object Loading : ListViewState()
 
-data class ListReady(val data: String = "") : ListViewState()
+data class ListReady(val data: List<ListPresenter.ListCoin>) : ListViewState()

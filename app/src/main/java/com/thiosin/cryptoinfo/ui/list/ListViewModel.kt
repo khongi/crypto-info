@@ -8,7 +8,7 @@ class ListViewModel @Inject constructor(
 ) : JobViewModel<ListViewState>(Loading) {
 
     fun load() = execute {
-        viewState = ListReady(listPresenter.getData())
+        viewState = ListReady(listPresenter.getCoins())
     }
 
 }
