@@ -9,7 +9,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupWithNavController
-import kotlinx.android.synthetic.main.activity_main.*
+import com.thiosin.cryptoinfo.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,12 +18,14 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        val binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         navController = findNavController(R.id.navHost)
-        appBarConfiguration = AppBarConfiguration(setOf(R.id.listFragment, R.id.aboutFragment), drawerLayout)
-        toolbar.setupWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
+        appBarConfiguration =
+            AppBarConfiguration(setOf(R.id.listFragment, R.id.aboutFragment), binding.drawerLayout)
+        binding.toolbar.setupWithNavController(navController, appBarConfiguration)
+        binding.navView.setupWithNavController(navController)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
