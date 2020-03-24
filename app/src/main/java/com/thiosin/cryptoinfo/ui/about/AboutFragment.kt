@@ -1,15 +1,22 @@
 package com.thiosin.cryptoinfo.ui.about
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
-import co.zsmb.rainbowcake.base.RainbowCakeFragment
+import android.view.ViewGroup
 import co.zsmb.rainbowcake.dagger.getViewModelFromFactory
-import com.thiosin.cryptoinfo.R
+import com.thiosin.cryptoinfo.databinding.FragmentAboutBinding
+import com.thiosin.cryptoinfo.ui.util.NavFragment
 
-class AboutFragment : RainbowCakeFragment<AboutViewState, AboutViewModel>() {
+class AboutFragment : NavFragment<AboutViewState, AboutViewModel, FragmentAboutBinding>() {
 
     override fun provideViewModel() = getViewModelFromFactory()
-    override fun getViewResource() = R.layout.fragment_about
+    override fun inflateViewBinding(
+        inflater: LayoutInflater,
+        container: ViewGroup?
+    ): FragmentAboutBinding {
+        return FragmentAboutBinding.inflate(inflater, container, false)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
