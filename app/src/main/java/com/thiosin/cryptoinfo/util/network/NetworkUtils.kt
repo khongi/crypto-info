@@ -1,4 +1,4 @@
-package util.network
+package com.thiosin.cryptoinfo.util.network
 
 import android.os.Build
 import com.thiosin.cryptoinfo.BuildConfig

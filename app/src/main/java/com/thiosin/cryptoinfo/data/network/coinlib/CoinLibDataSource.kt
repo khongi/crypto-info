@@ -2,8 +2,8 @@ package com.thiosin.cryptoinfo.data.network.coinlib
 
 import com.thiosin.cryptoinfo.data.network.coinlib.models.CoinLibCoinApiResponse
 import com.thiosin.cryptoinfo.data.network.coinlib.models.CoinLibListApiResponse
-import util.network.NetworkResponse
-import util.network.executeNetworkCall
+import com.thiosin.cryptoinfo.util.network.NetworkResponse
+import com.thiosin.cryptoinfo.util.network.executeNetworkCall
 import javax.inject.Inject
 
 class CoinLibDataSource @Inject constructor(private val coinLibApi: CoinLibApi) {

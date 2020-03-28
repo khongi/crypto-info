@@ -1,4 +1,4 @@
-package util.network
+package com.thiosin.cryptoinfo.util.network
 
 /**
  *                           NetworkResult<T>
