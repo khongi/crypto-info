@@ -4,6 +4,10 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: "androidx.navigation.safeargs.kotlin"
 
+def apikeyPropertiesFile = rootProject.file("apikey.properties")
+def apikeyProperties = new Properties()
+apikeyProperties.load(new FileInputStream(apikeyPropertiesFile))
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
@@ -36,6 +40,20 @@ android {
 
     viewBinding {
         enabled = true
+    }
+
+    // Flavors
+    def environment = "environment"
+    flavorDimensions environment
+
+    productFlavors {
+        dev {
+            dimension environment
+            buildConfigField 'String', 'COINLIB_BASE_URL', "\"http://coinlib.io/api/v1/\""
+            buildConfigField 'String', 'COINLIB_API_KEY', apikeyProperties['COINLIB_API_KEY']
+            buildConfigField 'String', 'COINLAYER_BASE_URL', "\"http://api.coinlayer.com/api/\""
+            buildConfigField 'String', 'COINLAYER_API_KEY', apikeyProperties['COINLAYER_API_KEY']
+        }
     }
 }
 

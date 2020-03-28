@@ -31,6 +31,7 @@ licenses:
   # White list all the licenses.
   - '.+'
 script:
+  - mv apikey.sample.properties apikey.properties
   - ./gradlew build check
   - sonar-scanner
 before_cache:
