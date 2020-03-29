@@ -7,8 +7,8 @@ data class DomainCoin(
     val rank: Int,
     val delta24h: Double,
     val iconUrl: String,
-    val low24h: Double?,
-    val high24h: Double?,
-    val delta1h: Double?,
-    val delta7d: Double?
+    val low24h: Double? = null,
+    val high24h: Double? = null,
+    val delta1h: Double? = null,
+    val delta7d: Double? = null
 )
