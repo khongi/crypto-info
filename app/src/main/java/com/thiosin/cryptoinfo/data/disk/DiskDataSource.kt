@@ -25,8 +25,8 @@ class DiskDataSource @Inject constructor(
         coinDao.updateCoin(coin.toRoomCoin())
     }
 
-    fun getCoinById(id: Int): DomainCoin {
-        return coinDao.getCoinById(id).toDomainCoin()
+    fun getCoinBySymbol(symbol: String): DomainCoin {
+        return coinDao.getCoinBySymbol(symbol).toDomainCoin()
     }
 
 }

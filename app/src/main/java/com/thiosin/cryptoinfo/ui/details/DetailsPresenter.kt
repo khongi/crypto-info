@@ -16,5 +16,5 @@ class DetailsPresenter @Inject constructor(private val coinInteractor: CoinInter
 }
 
 private fun DomainCoin.toDetailsCoin(): DetailsPresenter.DetailsCoin {
-    return DetailsPresenter.DetailsCoin(this.id)
+    TODO()
 }

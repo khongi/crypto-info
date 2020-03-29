@@ -12,8 +12,8 @@ abstract class CoinDao {
     @Query("SELECT * FROM coins WHERE symbol = :symbol")
     abstract fun getAllCoinsBySymbol(symbol: String): List<RoomCoin>
 
-    @Query("SELECT * FROM coins WHERE id = :id")
-    abstract fun getCoinById(id: Int): RoomCoin
+    @Query("SELECT * FROM coins WHERE symbol = :symbol")
+    abstract fun getCoinBySymbol(symbol: String): RoomCoin
 
     @Insert
     abstract fun insertCoins(coins: List<RoomCoin>)

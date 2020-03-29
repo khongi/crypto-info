@@ -8,7 +8,7 @@ import javax.inject.Inject
 class ListPresenter @Inject constructor(private val coinInteractor: CoinInteractor) {
 
     suspend fun getCoins(): List<ListCoin> = withIOContext {
-        coinInteractor.getCoins().map(DomainCoin::toListCoin)
+        TODO()
     }
 
     data class ListCoin(val id: Int)
@@ -16,5 +16,5 @@ class ListPresenter @Inject constructor(private val coinInteractor: CoinInteract
 }
 
 private fun DomainCoin.toListCoin(): ListPresenter.ListCoin {
-    return ListPresenter.ListCoin(this.id)
+    TODO()
 }

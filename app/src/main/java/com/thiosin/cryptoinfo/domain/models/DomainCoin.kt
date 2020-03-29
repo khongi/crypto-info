@@ -1,7 +1,6 @@
 package com.thiosin.cryptoinfo.domain.models
 
 data class DomainCoin(
-    val id: Int,
     val symbol: String,
     val name: String,
     val price: Double,
