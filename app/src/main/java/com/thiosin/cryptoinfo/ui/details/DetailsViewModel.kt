@@ -9,7 +9,7 @@ class DetailsViewModel @Inject constructor(
 
     fun load() = execute {
         // TODO get arguments from safeargs
-        viewState = DetailsReady(detailsPresenter.getCoin(0))
+//        viewState = DetailsReady(detailsPresenter.getCoin(0))
     }
 
 }

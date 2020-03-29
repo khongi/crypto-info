@@ -5,17 +5,12 @@ import javax.inject.Inject
 
 class CoinInteractor @Inject constructor() {
 
-    companion object {
-        // TODO get data from data layer
-        private val COINS = listOf(DomainCoin(0), DomainCoin(1))
-    }
-
     fun getCoins(): List<DomainCoin> {
-        return COINS
+        return listOf()
     }
 
     fun getCoin(id: Int): DomainCoin {
-        return COINS.first { it.id == id }
+        TODO()
     }
 
 }
