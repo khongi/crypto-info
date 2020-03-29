@@ -8,7 +8,7 @@ import javax.inject.Inject
 class DetailsPresenter @Inject constructor(private val coinInteractor: CoinInteractor) {
 
     suspend fun getCoin(id: Int): DetailsCoin = withIOContext {
-        coinInteractor.getCoin(id).toDetailsCoin()
+        TODO()
     }
 
     data class DetailsCoin(val id: Int)
@@ -16,5 +16,5 @@ class DetailsPresenter @Inject constructor(private val coinInteractor: CoinInter
 }
 
 private fun DomainCoin.toDetailsCoin(): DetailsPresenter.DetailsCoin {
-    return DetailsPresenter.DetailsCoin(this.id)
+    TODO()
 }

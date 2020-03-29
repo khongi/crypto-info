@@ -5,7 +5,6 @@ import com.thiosin.cryptoinfo.domain.models.DomainCoin
 
 fun RoomCoin.toDomainCoin(): DomainCoin {
     return DomainCoin(
-        id = id,
         symbol = symbol,
         name = name,
         price = price,
@@ -21,7 +20,6 @@ fun RoomCoin.toDomainCoin(): DomainCoin {
 
 fun DomainCoin.toRoomCoin(): RoomCoin {
     return RoomCoin(
-        id = id,
         symbol = symbol,
         name = name,
         price = price,
