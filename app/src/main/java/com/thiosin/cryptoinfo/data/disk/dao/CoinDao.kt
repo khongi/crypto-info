@@ -25,7 +25,7 @@ abstract class CoinDao {
     abstract fun removeAllCoins()
 
     @Transaction
-    fun refreshCoins(coins: List<RoomCoin>) {
+    open fun refreshCoins(coins: List<RoomCoin>) {
         removeAllCoins()
         insertCoins(coins)
     }

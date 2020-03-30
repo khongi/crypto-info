@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import co.zsmb.rainbowcake.dagger.getViewModelFromFactory
 import com.thiosin.cryptoinfo.databinding.FragmentDetailsBinding
 import com.thiosin.cryptoinfo.ui.util.NavFragment
+import timber.log.Timber
 
 class DetailsFragment : NavFragment<DetailsViewState, DetailsViewModel, FragmentDetailsBinding>() {
 
@@ -31,7 +32,10 @@ class DetailsFragment : NavFragment<DetailsViewState, DetailsViewModel, Fragment
     }
 
     override fun render(viewState: DetailsViewState) {
-        // TODO Render state
+        when (viewState) {
+            Loading -> Timber.d("Loading...")
+            is DetailsReady -> Timber.d(viewState.coin.toString())
+        }
     }
 
 }
