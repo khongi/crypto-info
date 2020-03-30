@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import co.zsmb.rainbowcake.dagger.getViewModelFromFactory
 import com.thiosin.cryptoinfo.databinding.FragmentListBinding
 import com.thiosin.cryptoinfo.ui.util.NavFragment
+import timber.log.Timber
 
 class ListFragment : NavFragment<ListViewState, ListViewModel, FragmentListBinding>() {
 
@@ -35,7 +36,10 @@ class ListFragment : NavFragment<ListViewState, ListViewModel, FragmentListBindi
     }
 
     override fun render(viewState: ListViewState) {
-        // TODO Render state
+        when (viewState) {
+            Loading -> Timber.d("Loading...")
+            is ListReady -> Timber.d(viewState.data.toString())
+        }
     }
 
 }
