@@ -4,7 +4,6 @@ import com.google.common.truth.Truth.assertThat
 import com.thiosin.cryptoinfo.data.disk.DiskDataSource
 import com.thiosin.cryptoinfo.data.network.NetworkDataSource
 import com.thiosin.cryptoinfo.domain.models.DomainCoin
-import com.thiosin.cryptoinfo.util.network.DataTransferSuccess
 import io.mockk.every
 import io.mockk.mockk
 import kotlinx.coroutines.runBlocking
@@ -41,10 +40,9 @@ class CoinInteractorTest {
     fun `getCoins returns objects from database`() = runBlocking {
         every { diskDataSource.getAllCoins() } returns MOCK_COINS
 
-        val response = coinInteractor.getCoins()
+        val response = coinInteractor.getNetworkCoins()
 
-        assertThat(response).isInstanceOf(DataTransferSuccess::class.java)
-        assertThat((response as DataTransferSuccess).result).contains(MOCK_COINS[0])
+        assertThat(response).contains(MOCK_COINS[0])
     }
 
 }
