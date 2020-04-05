@@ -54,6 +54,9 @@ android {
             buildConfigField 'String', 'COINLAYER_BASE_URL', "\"http://api.coinlayer.com/api/\""
             buildConfigField 'String', 'COINLAYER_API_KEY', apikeyProperties['COINLAYER_API_KEY']
         }
+        mock {
+            dimension environment
+        }
     }
 }
 
