@@ -3,19 +3,13 @@ package com.thiosin.cryptoinfo.ui.list
 import co.zsmb.rainbowcake.withIOContext
 import com.thiosin.cryptoinfo.domain.interactors.CoinInteractor
 import com.thiosin.cryptoinfo.domain.models.DomainCoin
-import com.thiosin.cryptoinfo.util.network.*
 import javax.inject.Inject
 
 class ListPresenter @Inject constructor(private val coinInteractor: CoinInteractor) {
 
     suspend fun getCoins(): List<ListCoin> = withIOContext {
-        when (val response = coinInteractor.getCoins(true)) {
-            is DataTransferSuccess -> response.result.map(DomainCoin::toListCoin)
-            is NetworkUnavailableCached -> TODO()
-            is NetworkErrorCached -> TODO()
-            NetworkUnavailableNotCached -> TODO()
-            NetworkErrorNotCached -> TODO()
-        }
+        val coins = coinInteractor.getNetworkCoins()
+        coins?.map(DomainCoin::toListCoin) ?: emptyList()
     }
 
     data class ListCoin(

@@ -5,7 +5,8 @@ import com.thiosin.cryptoinfo.data.network.NetworkDataSource
 import com.thiosin.cryptoinfo.domain.models.DomainCoin
 import com.thiosin.cryptoinfo.domain.models.GetCoinsDto
 import com.thiosin.cryptoinfo.domain.toDomainCoin
-import com.thiosin.cryptoinfo.util.network.*
+import com.thiosin.cryptoinfo.util.network.NetworkResult
+import timber.log.Timber
 import javax.inject.Inject
 
 class CoinInteractor @Inject constructor(
@@ -13,36 +14,46 @@ class CoinInteractor @Inject constructor(
     private val diskDataSource: DiskDataSource
 ) {
 
-    suspend fun getCoins(refresh: Boolean = false): DataTransferResponse<List<DomainCoin>> {
-        if (!refresh) {
-            return DataTransferSuccess(diskDataSource.getAllCoins())
-        }
-        return when (val response = networkDataSource.getCoinList()) {
-            NetworkUnavailable, NetworkIOError -> NetworkUnavailableCached(diskDataSource.getAllCoins())
-            is NetworkHttpError -> NetworkErrorCached(diskDataSource.getAllCoins())
-            is NetworkResult -> {
-                val newCoinsDtos = response.result
-                val newDomainCoins = newCoinsDtos.map(GetCoinsDto::toDomainCoin)
-                diskDataSource.updateCoins(newDomainCoins)
-                DataTransferSuccess(diskDataSource.getAllCoins())
-            }
+    fun getCachedCoins(): List<DomainCoin>? {
+        return try {
+            Timber.d("Retrieving coins from database")
+            diskDataSource.getAllCoins()
+        } catch (t: Throwable) {
+            Timber.e(t)
+            null
         }
     }
 
-    suspend fun getCoin(
-        symbol: String,
-        refresh: Boolean = false
-    ): DataTransferResponse<DomainCoin> {
-        val cachedCoin = diskDataSource.getCoinBySymbol(symbol)
-        if (!refresh) {
-            return DataTransferSuccess(cachedCoin)
+    suspend fun getNetworkCoins(): List<DomainCoin>? {
+        Timber.d("Retrieving coins from network")
+        return when (val response = networkDataSource.getCoinList()) {
+            is NetworkResult -> {
+                val newCoinsDtos = response.result
+                val newDomainCoins = newCoinsDtos.map(GetCoinsDto::toDomainCoin)
+                Timber.d("Updating database with new coins")
+                diskDataSource.updateCoins(newDomainCoins)
+                getCachedCoins()
+            }
+            else -> null
         }
+    }
+
+    fun getCachedCoin(symbol: String): DomainCoin? {
+        return try {
+            Timber.d("Retrieving single coin from database")
+            diskDataSource.getCoinBySymbol(symbol)
+        } catch (t: Throwable) {
+            Timber.e(t)
+            null
+        }
+    }
+
+    suspend fun getCoin(symbol: String): DomainCoin? {
+        val cachedCoin = getCachedCoin(symbol)
         return when (val response = networkDataSource.getCoin(symbol)) {
-            NetworkUnavailable, NetworkIOError -> NetworkUnavailableCached(cachedCoin)
-            is NetworkHttpError -> NetworkErrorCached(cachedCoin)
             is NetworkResult -> {
                 val newCoinDto = response.result
-                val newDomainCoin = cachedCoin.copy(
+                cachedCoin?.copy(
                     price = newCoinDto.price,
                     low24h = newCoinDto.low24h,
                     high24h = newCoinDto.high24h,
@@ -50,8 +61,8 @@ class CoinInteractor @Inject constructor(
                     delta24h = newCoinDto.delta24h,
                     delta7d = newCoinDto.delta7d
                 )
-                DataTransferSuccess(newDomainCoin)
             }
+            else -> null
         }
     }
 

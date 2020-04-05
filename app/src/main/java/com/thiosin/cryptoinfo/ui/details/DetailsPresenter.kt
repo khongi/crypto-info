@@ -3,19 +3,13 @@ package com.thiosin.cryptoinfo.ui.details
 import co.zsmb.rainbowcake.withIOContext
 import com.thiosin.cryptoinfo.domain.interactors.CoinInteractor
 import com.thiosin.cryptoinfo.domain.models.DomainCoin
-import com.thiosin.cryptoinfo.util.network.*
 import javax.inject.Inject
 
 class DetailsPresenter @Inject constructor(private val coinInteractor: CoinInteractor) {
 
     suspend fun getCoin(symbol: String): DetailsCoin = withIOContext {
-        when (val response = coinInteractor.getCoin(symbol, true)) {
-            is DataTransferSuccess -> response.result.toDetailsCoin()
-            is NetworkUnavailableCached -> TODO()
-            is NetworkErrorCached -> TODO()
-            NetworkUnavailableNotCached -> TODO()
-            NetworkErrorNotCached -> TODO()
-        }
+        val coin = coinInteractor.getCoin(symbol)
+        coin.toDetailsCoin()
     }
 
     data class DetailsCoin(
@@ -33,17 +27,17 @@ class DetailsPresenter @Inject constructor(private val coinInteractor: CoinInter
 
 }
 
-private fun DomainCoin.toDetailsCoin(): DetailsPresenter.DetailsCoin {
+private fun DomainCoin?.toDetailsCoin(): DetailsPresenter.DetailsCoin {
     return DetailsPresenter.DetailsCoin(
-            symbol,
-            name,
-            price.toString(),
-            rank.toString(),
-            delta24h.toString(),
-            iconUrl,
-            low24h.toString(),
-            high24h.toString(),
-            delta1h.toString(),
-            delta7d.toString()
+        symbol = this?.symbol ?: "NA",
+        name = this?.name ?: "NA",
+        price = this?.price.toString(),
+        rank = this?.rank.toString(),
+        delta24h = this?.delta24h.toString(),
+        iconUrl = this?.iconUrl ?: "NA",
+        low24h = this?.low24h.toString(),
+        high24h = this?.high24h.toString(),
+        delta1h = this?.delta1h.toString(),
+        delta7d = this?.delta7d.toString()
     )
 }
