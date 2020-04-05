@@ -8,13 +8,29 @@ import javax.inject.Inject
 class ListPresenter @Inject constructor(private val coinInteractor: CoinInteractor) {
 
     suspend fun getCoins(): List<ListCoin> = withIOContext {
-        coinInteractor.getCoins().map(DomainCoin::toListCoin)
+        val coins = coinInteractor.getNetworkCoins()
+        coins?.map(DomainCoin::toListCoin) ?: emptyList()
     }
 
-    data class ListCoin(val id: Int)
+    data class ListCoin(
+        val symbol: String,
+        val name: String,
+        val price: String,
+        val rank: String,
+        val delta24h: String,
+        val iconUrl: String
+    )
 
 }
 
 private fun DomainCoin.toListCoin(): ListPresenter.ListCoin {
-    return ListPresenter.ListCoin(this.id)
+    // TODO formatting
+    return ListPresenter.ListCoin(
+        symbol = symbol,
+        name = name,
+        price = price.toString(),
+        rank = rank.toString(),
+        delta24h = delta24h.toString(),
+        iconUrl = iconUrl
+    )
 }
