@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.thiosin.cryptoinfo.R
 import com.thiosin.cryptoinfo.ui.list.CoinAdapter.CoinViewHolder
 import com.thiosin.cryptoinfo.ui.list.ListPresenter.ListCoin
@@ -30,7 +31,11 @@ class CoinAdapter : ListAdapter<ListCoin, CoinViewHolder>(CoinComparator) {
         holder.rankText.text = coin.rank
         holder.deltaText.text = coin.delta24h
         // TODO set delta color
-        // TODO set image
+        Glide
+            .with(holder.coinImage)
+            .load(coin.iconUrl)
+            .circleCrop()
+            .into(holder.coinImage)
     }
 
     inner class CoinViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
