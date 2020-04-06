@@ -22,11 +22,6 @@ class ListFragment : NavFragment<ListViewState, ListViewModel, FragmentListBindi
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        binding.detailsButton.setOnClickListener {
-            val directions = ListFragmentDirections.actionListFragmentToDetailsFragment("dummyId")
-            navigator.navigate(directions)
-        }
     }
 
     override fun onStart() {
