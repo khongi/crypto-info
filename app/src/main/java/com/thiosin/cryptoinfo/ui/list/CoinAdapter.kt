@@ -30,7 +30,8 @@ class CoinAdapter : ListAdapter<ListCoin, CoinViewHolder>(CoinComparator) {
         holder.priceText.text = coin.price
         holder.rankText.text = coin.rank
         holder.deltaText.text = coin.delta24h
-        // TODO set delta color
+        holder.deltaText.setTextColor(coin.deltaTextColor)
+
         Glide
             .with(holder.coinImage)
             .load(coin.iconUrl)

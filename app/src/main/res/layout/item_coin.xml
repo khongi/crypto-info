@@ -77,7 +77,6 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:textAlignment="textEnd"
-            android:textColor="@color/colorPositive"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/rightGuidline"
             app:layout_constraintTop_toTopOf="parent"
