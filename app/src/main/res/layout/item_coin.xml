@@ -11,7 +11,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="82dp">
+        android:layout_height="84dp">
 
         <ImageView
             android:id="@+id/coinImage"
@@ -19,7 +19,7 @@
             android:layout_height="64dp"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintEnd_toStartOf="@+id/leftGuideline"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="ContentDescription"
@@ -35,8 +35,8 @@
             android:textColor="@color/colorPrimary"
             android:textSize="24sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/guideline3"
-            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintEnd_toStartOf="@+id/rightGuidline"
+            app:layout_constraintStart_toStartOf="@+id/leftGuideline"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Bitcoin" />
 
@@ -47,25 +47,27 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/guideline3"
-            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintEnd_toStartOf="@+id/rightGuidline"
+            app:layout_constraintStart_toStartOf="@+id/leftGuideline"
             app:layout_constraintTop_toBottomOf="@+id/nameText"
-            tools:text="6745.02 USD" />
+            tools:text="6745.02 $" />
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline2"
+            android:id="@+id/leftGuideline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_begin="82dp" />
+            app:layout_constraintGuide_begin="84dp" />
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline3"
+            android:id="@+id/rightGuidline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_end="64dp" />
+            app:layout_constraintGuide_end="80dp" />
 
         <TextView
             android:id="@+id/deltaText"
@@ -75,10 +77,11 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:textAlignment="textEnd"
+            android:textColor="@color/colorPositive"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintStart_toStartOf="@+id/rightGuidline"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="+1.2%" />
+            tools:text="+100.25%" />
 
         <TextView
             android:id="@+id/rankText"
@@ -89,12 +92,12 @@
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:textAlignment="textEnd"
-            android:textColor="@color/colorAccent"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textSize="30sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintStart_toStartOf="@+id/rightGuidline"
             app:layout_constraintTop_toBottomOf="@+id/deltaText"
             tools:text="1" />
 
