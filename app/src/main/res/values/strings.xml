@@ -5,9 +5,9 @@
     <string name="list_search">Search</string>
 
     <string name="details_rank">Rank</string>
-    <string name="details_price">Price</string>
-    <string name="details_low_24h">Low 24h</string>
-    <string name="details_high_24h">High 24h</string>
+    <string name="details_price">Average price</string>
+    <string name="details_low_24h">24 hour low</string>
+    <string name="details_high_24h">24 hour high</string>
     <string name="details_hour">Hour</string>
     <string name="details_day">Day</string>
     <string name="details_week">Week</string>

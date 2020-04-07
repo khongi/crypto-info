@@ -83,7 +83,6 @@ class DetailsFragment : NavFragment<DetailsViewState, DetailsViewModel, Fragment
                     .with(this)
                     .load(coin.iconUrl)
                     .placeholder(R.drawable.ic_coin)
-                    .circleCrop()
                     .into(binding.coinImage)
 
                 binding.refreshLayout.isRefreshing = false
