@@ -13,4 +13,19 @@ class DetailsViewModel @Inject constructor(
         viewState = DetailsReady(refreshedCoin)
     }
 
+    fun refresh() = execute {
+        val oldState = (state.value as? DetailsReady) ?: return@execute
+        val symbol = oldState.coin.symbol
+
+        viewState = Loading
+
+        val refreshedCoin = detailsPresenter.getNetworkCoin(symbol)
+        if (refreshedCoin == null) {
+            viewState = oldState
+            return@execute
+        }
+
+        viewState = DetailsReady(refreshedCoin)
+    }
+
 }

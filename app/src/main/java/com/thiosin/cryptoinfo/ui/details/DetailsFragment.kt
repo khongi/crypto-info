@@ -30,6 +30,10 @@ class DetailsFragment : NavFragment<DetailsViewState, DetailsViewModel, Fragment
         val navController = findNavController()
         val appBarConfiguration = AppBarConfiguration(navController.graph)
         binding.detailsToolbar.setupWithNavController(navController, appBarConfiguration)
+
+        binding.refreshLayout.setOnRefreshListener {
+            viewModel.refresh()
+        }
     }
 
     override fun onStart() {
