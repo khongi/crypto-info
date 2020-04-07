@@ -63,7 +63,7 @@ class CoinInteractor @Inject constructor(
         return when (val response = networkDataSource.getCoin(symbol)) {
             is NetworkResult -> {
                 val newCoinDto = response.result
-                cachedCoin.copy(
+                val newCoin = cachedCoin.copy(
                     price = newCoinDto.price,
                     low24h = newCoinDto.low24h,
                     high24h = newCoinDto.high24h,
@@ -71,6 +71,8 @@ class CoinInteractor @Inject constructor(
                     delta24h = newCoinDto.delta24h,
                     delta7d = newCoinDto.delta7d
                 )
+                diskDataSource.updateCoin(newCoin)
+                getCachedCoin(symbol)
             }
             else -> null
         }
