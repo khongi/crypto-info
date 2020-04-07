@@ -19,6 +19,7 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/refreshLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -156,7 +157,7 @@
                 app:layout_constraintEnd_toEndOf="@+id/delta1hImage"
                 app:layout_constraintStart_toStartOf="@+id/delta1hImage"
                 app:layout_constraintTop_toBottomOf="@+id/delta1hImage"
-                tools:text="- 1.2 %" />
+                tools:text="-1.2 %" />
 
             <TextView
                 android:id="@+id/delta24hText"
@@ -165,7 +166,7 @@
                 app:layout_constraintEnd_toEndOf="@+id/delta24hImage"
                 app:layout_constraintStart_toStartOf="@+id/delta24hImage"
                 app:layout_constraintTop_toBottomOf="@+id/delta24hImage"
-                tools:text="+ 2.1 %" />
+                tools:text="+2.1 %" />
 
             <TextView
                 android:id="@+id/delta7dText"
@@ -174,7 +175,7 @@
                 app:layout_constraintEnd_toEndOf="@+id/delta7dImage"
                 app:layout_constraintStart_toStartOf="@+id/delta7dImage"
                 app:layout_constraintTop_toBottomOf="@+id/delta7dImage"
-                tools:text="+ 1.5 %" />
+                tools:text="+1.5 %" />
 
             <ImageView
                 android:id="@+id/delta24hImage"

@@ -7,9 +7,10 @@ class DetailsViewModel @Inject constructor(
     private val detailsPresenter: DetailsPresenter
 ) : JobViewModel<DetailsViewState>(Loading) {
 
-    fun load() = execute {
-        //         TODO get arguments from safeargs
-        viewState = DetailsReady(detailsPresenter.getCoin("BTC"))
+    fun load(symbol: String) = execute {
+        viewState = DetailsReady(detailsPresenter.getCachedCoin(symbol))
+        val refreshedCoin = detailsPresenter.getNetworkCoin(symbol) ?: return@execute
+        viewState = DetailsReady(refreshedCoin)
     }
 
 }
