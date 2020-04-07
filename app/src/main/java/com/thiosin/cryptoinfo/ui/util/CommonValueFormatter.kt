@@ -1,7 +1,7 @@
 package com.thiosin.cryptoinfo.ui.util
 
 import android.content.Context
-import android.os.Build
+import androidx.core.content.ContextCompat
 import com.thiosin.cryptoinfo.R
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -19,11 +19,15 @@ class CommonValueFormatter @Inject constructor(
                 R.color.colorNegative
             }
 
-        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            context.getColor(colorCode)
-        } else {
-            context.resources.getColor(colorCode)
-        }
+        return ContextCompat.getColor(context, colorCode)
+    }
+
+    fun formatDelta(delta: Double): String {
+        return context.getString(R.string.format_delta, delta)
+    }
+
+    fun formatPrice(price: Double): String {
+        return context.getString(R.string.format_price, price)
     }
 
 }

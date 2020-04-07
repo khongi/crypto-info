@@ -29,13 +29,12 @@ class ListPresenter @Inject constructor(
 }
 
 private fun DomainCoin.toListCoin(formatter: CommonValueFormatter): ListPresenter.ListCoin {
-    // TODO formatting
     return ListPresenter.ListCoin(
         symbol = symbol,
         name = name,
-        price = price.toString(),
+        price = formatter.formatPrice(price),
         rank = rank.toString(),
-        delta24h = delta24h.toString(),
+        delta24h = formatter.formatDelta(delta24h),
         iconUrl = iconUrl,
         deltaTextColor = formatter.toDeltaColor(delta24h)
     )

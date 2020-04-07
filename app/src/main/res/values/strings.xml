@@ -4,4 +4,7 @@
     <string name="list_title">List</string>
     <string name="details_title">Details</string>
     <string name="about_title">About</string>
+
+    <string name="format_price">%.2f $</string>
+    <string name="format_delta">%.1f %%</string>
 </resources>
