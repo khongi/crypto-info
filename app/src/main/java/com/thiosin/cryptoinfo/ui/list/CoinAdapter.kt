@@ -35,6 +35,7 @@ class CoinAdapter : ListAdapter<ListCoin, CoinViewHolder>(CoinComparator) {
         Glide
             .with(holder.coinImage)
             .load(coin.iconUrl)
+            .placeholder(R.drawable.ic_coin)
             .circleCrop()
             .into(holder.coinImage)
     }
