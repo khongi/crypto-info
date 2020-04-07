@@ -4,6 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupWithNavController
 import co.zsmb.rainbowcake.dagger.getViewModelFromFactory
 import com.thiosin.cryptoinfo.databinding.FragmentDetailsBinding
 import com.thiosin.cryptoinfo.ui.util.NavFragment
@@ -22,7 +25,9 @@ class DetailsFragment : NavFragment<DetailsViewState, DetailsViewModel, Fragment
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // TODO Setup views
+        val navController = findNavController()
+        val appBarConfiguration = AppBarConfiguration(navController.graph)
+        binding.detailsToolbar.setupWithNavController(navController, appBarConfiguration)
     }
 
     override fun onStart() {

@@ -4,6 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupWithNavController
 import co.zsmb.rainbowcake.dagger.getViewModelFromFactory
 import com.thiosin.cryptoinfo.databinding.FragmentListBinding
 import com.thiosin.cryptoinfo.ui.util.NavFragment
@@ -25,6 +28,11 @@ class ListFragment : NavFragment<ListViewState, ListViewModel, FragmentListBindi
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val navController = findNavController()
+        val appBarConfiguration = AppBarConfiguration(navController.graph, binding.drawerLayout)
+        binding.listToolbar.setupWithNavController(navController, appBarConfiguration)
+        binding.navView.setupWithNavController(navController)
 
         adapter = CoinAdapter()
         adapter.listener = this
