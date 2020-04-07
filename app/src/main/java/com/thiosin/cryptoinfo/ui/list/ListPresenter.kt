@@ -21,6 +21,11 @@ class ListPresenter @Inject constructor(
         coins?.map { it.toListCoin(commonValueFormatter) } ?: emptyList()
     }
 
+    suspend fun getCachedCoinsBySymbol(symbol: String): List<ListCoin> = withIOContext {
+        val coins = coinInteractor.getCachedCoinsBySymbol(symbol)
+        coins.map { it.toListCoin(commonValueFormatter) }
+    }
+
     data class ListCoin(
         val symbol: String,
         val name: String,
