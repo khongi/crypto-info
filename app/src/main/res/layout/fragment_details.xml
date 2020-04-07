@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -16,11 +18,211 @@
             android:theme="@style/ThemeOverlay.MaterialComponents.Dark" />
     </com.google.android.material.appbar.AppBarLayout>
 
-    <TextView
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/refreshLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="?attr/actionBarSize"
-        android:gravity="center_horizontal|center_vertical"
-        android:text="@string/details_title" />
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/verticalGuideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.60" />
+
+            <TextView
+                android:id="@+id/nameText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@color/colorPrimary"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Bitcoin" />
+
+            <TextView
+                android:id="@+id/rankLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/details_rank"
+                app:layout_constraintStart_toStartOf="@+id/nameText"
+                app:layout_constraintTop_toBottomOf="@+id/nameText" />
+
+            <TextView
+                android:id="@+id/priceLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/details_price"
+                app:layout_constraintStart_toStartOf="@+id/rankLabel"
+                app:layout_constraintTop_toBottomOf="@+id/rankLabel" />
+
+            <TextView
+                android:id="@+id/low24hLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/details_low_24h"
+                app:layout_constraintStart_toStartOf="@+id/priceLabel"
+                app:layout_constraintTop_toBottomOf="@+id/priceLabel" />
+
+            <TextView
+                android:id="@+id/high24hLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/details_high_24h"
+                app:layout_constraintStart_toStartOf="@+id/low24hLabel"
+                app:layout_constraintTop_toBottomOf="@+id/low24hLabel" />
+
+            <TextView
+                android:id="@+id/rankText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                app:layout_constraintBottom_toBottomOf="@+id/rankLabel"
+                app:layout_constraintEnd_toStartOf="@+id/verticalGuideline"
+                app:layout_constraintTop_toTopOf="@+id/rankLabel"
+                tools:text="1" />
+
+            <TextView
+                android:id="@+id/priceText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                app:layout_constraintBottom_toBottomOf="@+id/priceLabel"
+                app:layout_constraintEnd_toStartOf="@+id/verticalGuideline"
+                app:layout_constraintTop_toTopOf="@+id/priceLabel"
+                tools:text="6782.03 $" />
+
+            <TextView
+                android:id="@+id/low24hText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                app:layout_constraintBottom_toBottomOf="@+id/low24hLabel"
+                app:layout_constraintEnd_toStartOf="@+id/verticalGuideline"
+                app:layout_constraintTop_toTopOf="@+id/low24hLabel"
+                tools:text="6698.24 $" />
+
+            <TextView
+                android:id="@+id/high24hText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                app:layout_constraintBottom_toBottomOf="@+id/high24hLabel"
+                app:layout_constraintEnd_toStartOf="@+id/verticalGuideline"
+                app:layout_constraintTop_toTopOf="@+id/high24hLabel"
+                tools:text="6796.43 $" />
+
+            <TextView
+                android:id="@+id/delta1hLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:text="@string/details_hour"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/high24hLabel" />
+
+            <TextView
+                android:id="@+id/delta24hLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/details_day"
+                app:layout_constraintBottom_toBottomOf="@+id/delta1hLabel"
+                app:layout_constraintEnd_toStartOf="@+id/delta7dLabel"
+                app:layout_constraintStart_toEndOf="@+id/delta1hLabel"
+                app:layout_constraintTop_toTopOf="@+id/delta1hLabel" />
+
+            <TextView
+                android:id="@+id/delta7dLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="@string/details_week"
+                app:layout_constraintBottom_toBottomOf="@+id/delta24hLabel"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/delta24hLabel" />
+
+            <TextView
+                android:id="@+id/delta1hText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="@+id/delta1hImage"
+                app:layout_constraintStart_toStartOf="@+id/delta1hImage"
+                app:layout_constraintTop_toBottomOf="@+id/delta1hImage"
+                tools:text="-1.2 %" />
+
+            <TextView
+                android:id="@+id/delta24hText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="@+id/delta24hImage"
+                app:layout_constraintStart_toStartOf="@+id/delta24hImage"
+                app:layout_constraintTop_toBottomOf="@+id/delta24hImage"
+                tools:text="+2.1 %" />
+
+            <TextView
+                android:id="@+id/delta7dText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="@+id/delta7dImage"
+                app:layout_constraintStart_toStartOf="@+id/delta7dImage"
+                app:layout_constraintTop_toBottomOf="@+id/delta7dImage"
+                tools:text="+1.5 %" />
+
+            <ImageView
+                android:id="@+id/delta24hImage"
+                android:layout_width="37dp"
+                android:layout_height="34dp"
+                app:layout_constraintEnd_toEndOf="@+id/delta24hLabel"
+                app:layout_constraintStart_toStartOf="@+id/delta24hLabel"
+                app:layout_constraintTop_toBottomOf="@+id/delta24hLabel"
+                tools:ignore="ContentDescription"
+                tools:srcCompat="@drawable/ic_up" />
+
+            <ImageView
+                android:id="@+id/delta1hImage"
+                android:layout_width="37dp"
+                android:layout_height="34dp"
+                app:layout_constraintEnd_toEndOf="@+id/delta1hLabel"
+                app:layout_constraintStart_toStartOf="@+id/delta1hLabel"
+                app:layout_constraintTop_toBottomOf="@+id/delta1hLabel"
+                tools:ignore="ContentDescription"
+                tools:srcCompat="@drawable/ic_down" />
+
+            <ImageView
+                android:id="@+id/delta7dImage"
+                android:layout_width="37dp"
+                android:layout_height="34dp"
+                app:layout_constraintEnd_toEndOf="@+id/delta7dLabel"
+                app:layout_constraintStart_toStartOf="@+id/delta7dLabel"
+                app:layout_constraintTop_toBottomOf="@+id/delta7dLabel"
+                tools:ignore="ContentDescription"
+                tools:srcCompat="@drawable/ic_up" />
+
+            <ImageView
+                android:id="@+id/coinImage"
+                android:layout_width="128dp"
+                android:layout_height="128dp"
+                android:layout_marginTop="16dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/verticalGuideline"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription"
+                tools:srcCompat="@drawable/ic_coin" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </LinearLayout>
 
