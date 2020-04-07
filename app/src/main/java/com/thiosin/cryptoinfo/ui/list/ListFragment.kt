@@ -51,7 +51,12 @@ class ListFragment : NavFragment<ListViewState, ListViewModel, FragmentListBindi
     }
 
     override fun onCoinClicked(coin: ListPresenter.ListCoin) {
-        navigator.navigate(ListFragmentDirections.actionListFragmentToDetailsFragment(coin.symbol))
+        navigator.navigate(
+            ListFragmentDirections.actionListFragmentToDetailsFragment(
+                symbol = coin.symbol,
+                title = coin.name
+            )
+        )
     }
 
 }

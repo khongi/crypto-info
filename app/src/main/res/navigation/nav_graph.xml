@@ -16,10 +16,13 @@
     <fragment
         android:id="@+id/detailsFragment"
         android:name="com.thiosin.cryptoinfo.ui.details.DetailsFragment"
-        android:label="@string/details_title"
+        android:label="{title}"
         tools:layout="@layout/fragment_details">
         <argument
-            android:name="coinId"
+            android:name="symbol"
+            app:argType="string" />
+        <argument
+            android:name="title"
             app:argType="string" />
     </fragment>
     <fragment
