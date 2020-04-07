@@ -1,7 +1,13 @@
 <resources>
     <string name="app_name">Crypto Info</string>
 
-    <string name="list_title">List</string>
+    <string name="list_title">Coins</string>
+    <string name="list_search">Search</string>
+
     <string name="details_title">Details</string>
+
     <string name="about_title">About</string>
+
+    <string name="format_price">%.2f $</string>
+    <string name="format_delta">%.1f %%</string>
 </resources>
