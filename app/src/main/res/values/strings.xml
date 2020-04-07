@@ -4,7 +4,13 @@
     <string name="list_title">Coins</string>
     <string name="list_search">Search</string>
 
-    <string name="details_title">Details</string>
+    <string name="details_rank">Rank</string>
+    <string name="details_price">Price</string>
+    <string name="details_low_24h">Low 24h</string>
+    <string name="details_high_24h">High 24h</string>
+    <string name="details_hour">Hour</string>
+    <string name="details_day">Day</string>
+    <string name="details_week">Week</string>
 
     <string name="about_title">About</string>
 

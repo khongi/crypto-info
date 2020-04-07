@@ -67,7 +67,7 @@ class ListFragment : NavFragment<ListViewState, ListViewModel, FragmentListBindi
         navigator.navigate(
             ListFragmentDirections.actionListFragmentToDetailsFragment(
                 symbol = coin.symbol,
-                title = coin.name
+                title = coin.symbol
             )
         )
     }
