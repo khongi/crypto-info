@@ -11,7 +11,12 @@ class ListPresenter @Inject constructor(
     private val commonValueFormatter: CommonValueFormatter
 ) {
 
-    suspend fun getCoins(): List<ListCoin> = withIOContext {
+    suspend fun getCachedCoins(): List<ListCoin> = withIOContext {
+        val coins = coinInteractor.getCachedCoins()
+        coins?.map { it.toListCoin(commonValueFormatter) } ?: emptyList()
+    }
+
+    suspend fun getRefreshedCoins(): List<ListCoin> = withIOContext {
         val coins = coinInteractor.getNetworkCoins()
         coins?.map { it.toListCoin(commonValueFormatter) } ?: emptyList()
     }

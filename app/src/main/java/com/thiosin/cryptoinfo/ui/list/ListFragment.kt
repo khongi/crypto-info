@@ -29,6 +29,10 @@ class ListFragment : NavFragment<ListViewState, ListViewModel, FragmentListBindi
         adapter = CoinAdapter()
         adapter.listener = this
         binding.coinsList.adapter = adapter
+
+        binding.refreshLayout.setOnRefreshListener {
+            viewModel.refresh()
+        }
     }
 
     override fun onStart() {
@@ -40,12 +44,13 @@ class ListFragment : NavFragment<ListViewState, ListViewModel, FragmentListBindi
     override fun render(viewState: ListViewState) {
         when (viewState) {
             Loading -> {
-                // TODO show loading
                 Timber.d("Loading...")
+                binding.refreshLayout.isRefreshing = true
             }
             is ListReady -> {
                 Timber.d(viewState.coins.toString())
                 adapter.submitList(viewState.coins)
+                binding.refreshLayout.isRefreshing = false
             }
         }
     }
