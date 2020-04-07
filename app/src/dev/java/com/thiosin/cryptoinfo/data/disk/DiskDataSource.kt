@@ -14,7 +14,7 @@ class DiskDataSource @Inject constructor(
     }
 
     fun getAllCoinsBySymbol(symbol: String): List<DomainCoin> {
-        return coinDao.getAllCoinsBySymbol(symbol).map(RoomCoin::toDomainCoin)
+        return coinDao.getAllCoinsBySymbol("%$symbol%").map(RoomCoin::toDomainCoin)
     }
 
     fun updateCoins(coins: List<DomainCoin>) {

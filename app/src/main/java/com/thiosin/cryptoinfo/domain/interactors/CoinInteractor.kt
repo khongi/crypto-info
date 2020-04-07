@@ -24,6 +24,16 @@ class CoinInteractor @Inject constructor(
         }
     }
 
+    fun getCachedCoinsBySymbol(symbol: String): List<DomainCoin> {
+        return try {
+            Timber.d("Looking for $symbol in database")
+            diskDataSource.getAllCoinsBySymbol(symbol)
+        } catch (t: Throwable) {
+            Timber.e(t)
+            emptyList()
+        }
+    }
+
     suspend fun getNetworkCoins(): List<DomainCoin>? {
         Timber.d("Retrieving coins from network")
         return when (val response = networkDataSource.getCoinList()) {
