@@ -35,7 +35,7 @@
             android:textColor="@color/colorPrimary"
             android:textSize="24sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/rightGuidline"
+            app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
             app:layout_constraintStart_toStartOf="@+id/leftGuideline"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Bitcoin" />
@@ -50,7 +50,7 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/rightGuidline"
+            app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
             app:layout_constraintStart_toStartOf="@+id/leftGuideline"
             app:layout_constraintTop_toBottomOf="@+id/nameText"
             tools:text="6745.02 $" />
@@ -63,7 +63,7 @@
             app:layout_constraintGuide_begin="84dp" />
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/rightGuidline"
+            android:id="@+id/rightGuideline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -78,7 +78,7 @@
             android:layout_marginEnd="8dp"
             android:textAlignment="textEnd"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/rightGuidline"
+            app:layout_constraintStart_toStartOf="@+id/rightGuideline"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="+100.25%" />
 
@@ -96,7 +96,7 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/rightGuidline"
+            app:layout_constraintStart_toStartOf="@+id/rightGuideline"
             app:layout_constraintTop_toBottomOf="@+id/deltaText"
             tools:text="1" />
 

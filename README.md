@@ -4,7 +4,7 @@
 
 Sample Android Kotlin application written in MVI + Single Activity architecture (using [rainbowcake](rainbowcake.dev)).
 
-Feautures include:
+Features include:
 - Navigation Components
 - Viewbinding
 - API (Retrofit + OkHttp + Interceptors + Moshi)
