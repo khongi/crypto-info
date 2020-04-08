@@ -3,6 +3,7 @@ package com.thiosin.cryptoinfo.data.disk
 import com.thiosin.cryptoinfo.domain.models.DomainCoin
 import javax.inject.Inject
 
+@Suppress("UNUSED_PARAMETER")
 class DiskDataSource @Inject constructor() {
 
     fun getAllCoins(): List<DomainCoin> {

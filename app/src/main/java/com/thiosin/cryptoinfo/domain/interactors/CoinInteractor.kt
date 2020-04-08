@@ -24,6 +24,16 @@ class CoinInteractor @Inject constructor(
         }
     }
 
+    fun getCachedCoinsBySymbol(symbol: String): List<DomainCoin> {
+        return try {
+            Timber.d("Looking for $symbol in database")
+            diskDataSource.getAllCoinsBySymbol(symbol)
+        } catch (t: Throwable) {
+            Timber.e(t)
+            emptyList()
+        }
+    }
+
     suspend fun getNetworkCoins(): List<DomainCoin>? {
         Timber.d("Retrieving coins from network")
         return when (val response = networkDataSource.getCoinList()) {
@@ -38,22 +48,22 @@ class CoinInteractor @Inject constructor(
         }
     }
 
-    fun getCachedCoin(symbol: String): DomainCoin? {
+    fun getCachedCoin(symbol: String): DomainCoin {
         return try {
             Timber.d("Retrieving single coin from database")
             diskDataSource.getCoinBySymbol(symbol)
         } catch (t: Throwable) {
             Timber.e(t)
-            null
+            throw IllegalStateException("Coin $symbol does not exist in database")
         }
     }
 
-    suspend fun getCoin(symbol: String): DomainCoin? {
+    suspend fun getNetworkCoin(symbol: String): DomainCoin? {
         val cachedCoin = getCachedCoin(symbol)
         return when (val response = networkDataSource.getCoin(symbol)) {
             is NetworkResult -> {
                 val newCoinDto = response.result
-                cachedCoin?.copy(
+                val newCoin = cachedCoin.copy(
                     price = newCoinDto.price,
                     low24h = newCoinDto.low24h,
                     high24h = newCoinDto.high24h,
@@ -61,6 +71,8 @@ class CoinInteractor @Inject constructor(
                     delta24h = newCoinDto.delta24h,
                     delta7d = newCoinDto.delta7d
                 )
+                diskDataSource.updateCoin(newCoin)
+                getCachedCoin(symbol)
             }
             else -> null
         }

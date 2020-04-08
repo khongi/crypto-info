@@ -1,7 +1,46 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Crypto Info</string>
 
-    <string name="list_title">List</string>
-    <string name="details_title">Details</string>
-    <string name="about_title">About</string>
+    <string name="list_title" tools:keep="@string/list_title">Coins</string>
+    <string name="list_search" tools:keep="@string/list_search">Search</string>
+
+    <string name="details_rank" tools:keep="@string/details_rank">Rank</string>
+    <string name="details_price" tools:keep="@string/details_price">Average price</string>
+    <string name="details_low_24h" tools:keep="@string/details_low_24h">24 hour low</string>
+    <string name="details_high_24h" tools:keep="@string/details_high_24h">24 hour high</string>
+    <string name="details_hour" tools:keep="@string/details_hour">Hour</string>
+    <string name="details_day" tools:keep="@string/details_day">Day</string>
+    <string name="details_week" tools:keep="@string/details_week">Week</string>
+
+    <string name="about_title" tools:keep="@string/about_title">About</string>
+
+    <string name="format_price">%.4f $</string>
+    <string name="format_delta">%+.2f %%</string>
+
+    <string name="not_available">N/A</string>
+
+    <string name="license" tools:keep="@string/license">
+        MIT License\n
+        \n
+        Copyright © 2020 Khongor Bayarsaikhan\n
+        \n
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:\n
+        \n
+        The above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software.\n
+        \n
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+        SOFTWARE.
+    </string>
+    <string name="repo_link" tools:keep="@string/repo_link">https://github.com/khongi/crypto-info</string>
 </resources>

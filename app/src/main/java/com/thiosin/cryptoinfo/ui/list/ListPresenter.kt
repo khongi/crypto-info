@@ -3,13 +3,27 @@ package com.thiosin.cryptoinfo.ui.list
 import co.zsmb.rainbowcake.withIOContext
 import com.thiosin.cryptoinfo.domain.interactors.CoinInteractor
 import com.thiosin.cryptoinfo.domain.models.DomainCoin
+import com.thiosin.cryptoinfo.ui.util.CommonValueFormatter
 import javax.inject.Inject
 
-class ListPresenter @Inject constructor(private val coinInteractor: CoinInteractor) {
+class ListPresenter @Inject constructor(
+    private val coinInteractor: CoinInteractor,
+    private val commonValueFormatter: CommonValueFormatter
+) {
 
-    suspend fun getCoins(): List<ListCoin> = withIOContext {
+    suspend fun getCachedCoins(): List<ListCoin> = withIOContext {
+        val coins = coinInteractor.getCachedCoins()
+        coins?.map { it.toListCoin(commonValueFormatter) } ?: emptyList()
+    }
+
+    suspend fun getRefreshedCoins(): List<ListCoin> = withIOContext {
         val coins = coinInteractor.getNetworkCoins()
-        coins?.map(DomainCoin::toListCoin) ?: emptyList()
+        coins?.map { it.toListCoin(commonValueFormatter) } ?: emptyList()
+    }
+
+    suspend fun getCachedCoinsBySymbol(symbol: String): List<ListCoin> = withIOContext {
+        val coins = coinInteractor.getCachedCoinsBySymbol(symbol)
+        coins.map { it.toListCoin(commonValueFormatter) }
     }
 
     data class ListCoin(
@@ -18,19 +32,20 @@ class ListPresenter @Inject constructor(private val coinInteractor: CoinInteract
         val price: String,
         val rank: String,
         val delta24h: String,
-        val iconUrl: String
+        val iconUrl: String,
+        val deltaTextColor: Int
     )
 
 }
 
-private fun DomainCoin.toListCoin(): ListPresenter.ListCoin {
-    // TODO formatting
+private fun DomainCoin.toListCoin(formatter: CommonValueFormatter): ListPresenter.ListCoin {
     return ListPresenter.ListCoin(
         symbol = symbol,
         name = name,
-        price = price.toString(),
+        price = formatter.formatPrice(price),
         rank = rank.toString(),
-        delta24h = delta24h.toString(),
-        iconUrl = iconUrl
+        delta24h = formatter.formatDelta(delta24h),
+        iconUrl = iconUrl,
+        deltaTextColor = formatter.toDeltaColor(delta24h)
     )
 }
