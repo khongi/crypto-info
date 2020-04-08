@@ -32,7 +32,7 @@ licenses:
   - '.+'
 script:
   - mv apikey.sample.properties apikey.properties
-  - ./gradlew build check
+  - ./gradlew build check testDevDebugUnitTestCoverage
   - sonar-scanner
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
