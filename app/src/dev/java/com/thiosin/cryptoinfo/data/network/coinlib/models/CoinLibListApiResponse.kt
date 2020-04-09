@@ -17,14 +17,10 @@ import com.squareup.moshi.JsonClass
 /**
  *
  * @param coins
- * @param lastUpdatedTimestamp
- * @param remaining
  */
 @JsonClass(generateAdapter = true)
 data class CoinLibListApiResponse(
-    @Json(name = "coins") val coins: Array<CoinLibListCoin>,
-    @Json(name = "last_updated_timestamp") val lastUpdatedTimestamp: Long,
-    @Json(name = "remaining") val remaining: Int
+    @Json(name = "coins") val coins: Array<CoinLibListCoin>
 ) {
 
     override fun equals(other: Any?): Boolean {
@@ -34,17 +30,12 @@ data class CoinLibListApiResponse(
         other as CoinLibListApiResponse
 
         if (!coins.contentEquals(other.coins)) return false
-        if (lastUpdatedTimestamp != other.lastUpdatedTimestamp) return false
-        if (remaining != other.remaining) return false
 
         return true
     }
 
     override fun hashCode(): Int {
-        var result = coins.contentHashCode()
-        result = 31 * result + lastUpdatedTimestamp.hashCode()
-        result = 31 * result + remaining
-        return result
+        return coins.contentHashCode()
     }
 
 }

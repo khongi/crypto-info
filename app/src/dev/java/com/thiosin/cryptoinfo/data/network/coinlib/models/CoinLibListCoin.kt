@@ -17,22 +17,16 @@ import com.squareup.moshi.JsonClass
 /**
  *
  * @param symbol
- * @param showSymbol
  * @param name
  * @param rank
  * @param price
- * @param marketCap
- * @param volume24h
  * @param delta24h
  */
 @JsonClass(generateAdapter = true)
 data class CoinLibListCoin(
     @Json(name = "symbol") val symbol: String,
-    @Json(name = "show_symbol") val showSymbol: String,
     @Json(name = "name") val name: String,
     @Json(name = "rank") val rank: Int,
     @Json(name = "price") val price: String,
-    @Json(name = "market_cap") val marketCap: String,
-    @Json(name = "volume_24h") val volume24h: String,
     @Json(name = "delta_24h") val delta24h: String
 )
