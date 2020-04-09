@@ -1,6 +1,7 @@
 package com.thiosin.cryptoinfo.data.disk
 
 import com.google.common.truth.Truth.assertThat
+import com.thiosin.cryptoinfo.common.BTC
 import com.thiosin.cryptoinfo.common.DOMAIN_COINS
 import com.thiosin.cryptoinfo.common.ROOM_COINS
 import com.thiosin.cryptoinfo.data.disk.dao.CoinDao
@@ -33,10 +34,10 @@ class DiskDataSourceTest {
 
     @Test
     fun `getAllCoinsBySymbol adds sql like wildcards to query string`() {
-        val expectedQuery = "%${ROOM_COINS[0].symbol}%"
+        val expectedQuery = "%${BTC.symbol}%"
         every { coinDao.getAllCoinsBySymbol(expectedQuery) } returns listOf(ROOM_COINS[0])
 
-        diskDataSource.getAllCoinsBySymbol(ROOM_COINS[0].symbol)
+        diskDataSource.getAllCoinsBySymbol(BTC.symbol)
 
         verify { coinDao.getAllCoinsBySymbol(expectedQuery) }
     }
@@ -70,9 +71,9 @@ class DiskDataSourceTest {
 
     @Test
     fun `getCoinBySymbol mapping works`() {
-        every { coinDao.getCoinBySymbol(DOMAIN_COINS[0].symbol) } returns ROOM_COINS[0]
+        every { coinDao.getCoinBySymbol(BTC.symbol) } returns ROOM_COINS[0]
 
-        val coin = diskDataSource.getCoinBySymbol(DOMAIN_COINS[0].symbol)
+        val coin = diskDataSource.getCoinBySymbol(BTC.symbol)
 
         assertThat(coin).isEqualTo(DOMAIN_COINS[0])
     }
