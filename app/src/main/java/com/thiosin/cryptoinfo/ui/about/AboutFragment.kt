@@ -15,6 +15,7 @@ import com.thiosin.cryptoinfo.ui.util.NavFragment
 class AboutFragment : NavFragment<AboutViewState, AboutViewModel, FragmentAboutBinding>() {
 
     override fun provideViewModel() = getViewModelFromFactory()
+
     override fun inflateViewBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
@@ -32,14 +33,6 @@ class AboutFragment : NavFragment<AboutViewState, AboutViewModel, FragmentAboutB
         binding.navView.setupWithNavController(navController)
     }
 
-    override fun onStart() {
-        super.onStart()
-
-        viewModel.load()
-    }
-
-    override fun render(viewState: AboutViewState) {
-        // TODO Render state
-    }
+    override fun render(viewState: AboutViewState) = Unit
 
 }
