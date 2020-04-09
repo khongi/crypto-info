@@ -16,13 +16,9 @@ import com.squareup.moshi.JsonClass
 
 /**
  *
- * @param success
  * @param crypto
- * @param fiat
  */
 @JsonClass(generateAdapter = true)
 data class CoinLayerListApiResponse(
-    @Json(name = "success") val success: Boolean,
-    @Json(name = "crypto") val crypto: Map<String, CoinLayerCoin>,
-    @Json(name = "fiat") val fiat: Map<String, String>
+    @Json(name = "crypto") val crypto: Map<String, CoinLayerCoin>
 )

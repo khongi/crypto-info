@@ -18,15 +18,11 @@ import com.squareup.moshi.JsonClass
  *
  * @param symbol
  * @param name
- * @param nameFull
- * @param maxSupply
  * @param iconUrl
  */
 @JsonClass(generateAdapter = true)
 data class CoinLayerCoin(
     @Json(name = "symbol") val symbol: String,
     @Json(name = "name") val name: String,
-    @Json(name = "name_full") val nameFull: String,
-    @Json(name = "max_supply") val maxSupply: String,
     @Json(name = "icon_url") val iconUrl: String
 )
