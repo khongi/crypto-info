@@ -27,13 +27,19 @@ project.afterEvaluate {
             }
 
             def fileFilter = [
+                    '**/*Fragment.*',
+                    '**/*Activity.*',
+                    '**/*Application.*',
+                    '**/models/*',
+                    '**/*Utils.*',
+                    '**/*ViewState.*',
+                    '**/com/thiosin/cryptoinfo/databinding/*',
+                    '**/com/thiosin/cryptoinfo/generated/callback/*',
                     '**/R.class',
                     '**/R$*.class',
                     '**/BuildConfig.*',
                     '**/Manifest*.*',
                     '**/*Test*.*',
-                    '**/com/example/databinding/*',
-                    '**/com/example/generated/callback/*',
                     '**/android/databinding/*',
                     '**/androidx/databinding/*',
                     '**/di/module/*',

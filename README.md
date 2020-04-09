@@ -2,7 +2,7 @@
 
 ## Crypto Info
 
-Sample Android Kotlin application written in MVI + Single Activity architecture (using [rainbowcake](rainbowcake.dev)).
+Sample Android Kotlin application written in MVI + Single Activity architecture (using [rainbowcake](https://rainbowcake.dev)).
 
 Features include:
 - Navigation Components
