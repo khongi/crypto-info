@@ -19,7 +19,7 @@ import org.junit.Test
 class ListPresenterTest {
 
     private val coinInteractor: CoinInteractor = mockk()
-    private val commonValueFormatter: CommonValueFormatter = mockk(relaxed = true)
+    private val commonValueFormatter: CommonValueFormatter = mockk()
 
     private val listPresenter = ListPresenter(coinInteractor, commonValueFormatter)
 
