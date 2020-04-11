@@ -29,6 +29,11 @@ class ListFragment : NavFragment<ListViewState, ListViewModel, FragmentListBindi
         return FragmentListBinding.inflate(inflater, container, false)
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel.load()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
@@ -63,13 +68,6 @@ class ListFragment : NavFragment<ListViewState, ListViewModel, FragmentListBindi
                 return true
             }
         })
-
-    }
-
-    override fun onStart() {
-        super.onStart()
-
-        viewModel.load()
     }
 
     override fun render(viewState: ListViewState) {
@@ -79,7 +77,7 @@ class ListFragment : NavFragment<ListViewState, ListViewModel, FragmentListBindi
                 binding.refreshLayout.isRefreshing = true
             }
             is ListReady -> {
-                Timber.d(viewState.coins.toString())
+                Timber.d("Ready: $viewState")
                 adapter.submitList(viewState.coins)
                 binding.refreshLayout.isRefreshing = false
             }

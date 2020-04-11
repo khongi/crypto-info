@@ -9,11 +9,13 @@ class ListViewModel @Inject constructor(
 ) : JobViewModel<ListViewState>(Loading) {
 
     fun load() = execute {
+        Timber.d("Loading")
         viewState = ListReady(listPresenter.getCachedCoins())
         viewState = ListReady(listPresenter.getRefreshedCoins())
     }
 
     fun refresh() = execute {
+        Timber.d("Refreshing")
         viewState = Loading
         viewState = ListReady(listPresenter.getRefreshedCoins())
     }
@@ -26,7 +28,7 @@ class ListViewModel @Inject constructor(
     }
 
     fun clearSearch() = executeNonBlocking {
-        Timber.d("Loading from cache")
+        Timber.d("Clearing Search")
         viewState = Loading
         viewState = ListReady(listPresenter.getCachedCoins())
     }
