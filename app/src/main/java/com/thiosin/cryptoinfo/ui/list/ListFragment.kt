@@ -12,6 +12,7 @@ import androidx.navigation.ui.setupWithNavController
 import co.zsmb.rainbowcake.dagger.getViewModelFromFactory
 import com.thiosin.cryptoinfo.R
 import com.thiosin.cryptoinfo.databinding.FragmentListBinding
+import com.thiosin.cryptoinfo.ui.list.models.ListCoin
 import com.thiosin.cryptoinfo.ui.util.NavFragment
 import timber.log.Timber
 
@@ -85,7 +86,7 @@ class ListFragment : NavFragment<ListViewState, ListViewModel, FragmentListBindi
         }
     }
 
-    override fun onCoinClicked(coin: ListPresenter.ListCoin) {
+    override fun onCoinClicked(coin: ListCoin) {
         navigator.navigate(
             ListFragmentDirections.actionListFragmentToDetailsFragment(
                 symbol = coin.symbol,

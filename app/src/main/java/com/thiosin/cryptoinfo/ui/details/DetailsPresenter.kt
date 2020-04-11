@@ -3,6 +3,8 @@ package com.thiosin.cryptoinfo.ui.details
 import co.zsmb.rainbowcake.withIOContext
 import com.thiosin.cryptoinfo.domain.interactors.CoinInteractor
 import com.thiosin.cryptoinfo.domain.models.DomainCoin
+import com.thiosin.cryptoinfo.ui.details.models.DetailsCoin
+import com.thiosin.cryptoinfo.ui.details.models.DetailsCoinDelta
 import com.thiosin.cryptoinfo.ui.util.CommonValueFormatter
 import javax.inject.Inject
 
@@ -21,30 +23,11 @@ class DetailsPresenter @Inject constructor(
         coin.toDetailsCoin(commonValueFormatter)
     }
 
-    data class DetailsCoin(
-        val symbol: String,
-        val name: String,
-        val price: String,
-        val rank: String,
-        val iconUrl: String,
-        val low24h: String,
-        val high24h: String,
-        val delta1h: DetailsCoinDelta?,
-        val delta24h: DetailsCoinDelta,
-        val delta7d: DetailsCoinDelta?
-    )
-
-    data class DetailsCoinDelta(
-        val value: String,
-        val color: Int,
-        val image: Int
-    )
-
 }
 
-private fun DomainCoin.toDetailsCoin(formatter: CommonValueFormatter): DetailsPresenter.DetailsCoin {
+private fun DomainCoin.toDetailsCoin(formatter: CommonValueFormatter): DetailsCoin {
     val delta1h = if (this.delta1h != null) {
-        DetailsPresenter.DetailsCoinDelta(
+        DetailsCoinDelta(
             value = formatter.formatDelta(this.delta1h),
             color = formatter.toDeltaColor(this.delta1h),
             image = formatter.toDeltaImage(this.delta1h)
@@ -52,13 +35,13 @@ private fun DomainCoin.toDetailsCoin(formatter: CommonValueFormatter): DetailsPr
     } else {
         null
     }
-    val delta24h = DetailsPresenter.DetailsCoinDelta(
+    val delta24h = DetailsCoinDelta(
         value = formatter.formatDelta(this.delta24h),
         color = formatter.toDeltaColor(this.delta24h),
         image = formatter.toDeltaImage(this.delta24h)
     )
     val delta7d = if (this.delta7d != null) {
-        DetailsPresenter.DetailsCoinDelta(
+        DetailsCoinDelta(
             value = formatter.formatDelta(this.delta7d),
             color = formatter.toDeltaColor(this.delta7d),
             image = formatter.toDeltaImage(this.delta7d)
@@ -67,7 +50,7 @@ private fun DomainCoin.toDetailsCoin(formatter: CommonValueFormatter): DetailsPr
         null
     }
 
-    return DetailsPresenter.DetailsCoin(
+    return DetailsCoin(
         symbol = symbol,
         name = name,
         price = formatter.formatPrice(price),

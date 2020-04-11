@@ -1,7 +1,7 @@
 package com.thiosin.cryptoinfo.ui.list
 
 import androidx.recyclerview.widget.DiffUtil
-import com.thiosin.cryptoinfo.ui.list.ListPresenter.ListCoin
+import com.thiosin.cryptoinfo.ui.list.models.ListCoin
 
 object CoinComparator : DiffUtil.ItemCallback<ListCoin>() {
 

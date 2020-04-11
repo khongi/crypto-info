@@ -3,7 +3,7 @@ package com.thiosin.cryptoinfo.common
 import com.thiosin.cryptoinfo.domain.models.DomainCoin
 import com.thiosin.cryptoinfo.domain.models.GetCoinDto
 import com.thiosin.cryptoinfo.domain.models.GetCoinsDto
-import com.thiosin.cryptoinfo.ui.list.ListPresenter
+import com.thiosin.cryptoinfo.ui.list.models.ListCoin
 
 object BTC {
     const val symbol = "BTC"
@@ -96,7 +96,7 @@ val DOMAIN_GETCOINSDTO_LIST =
     )
 
 val PRESENTER_LIST_COINS = listOf(
-    ListPresenter.ListCoin(
+    ListCoin(
         symbol = BTC.symbol,
         name = BTC.name,
         price = BTC.priceFormatted,
@@ -105,7 +105,7 @@ val PRESENTER_LIST_COINS = listOf(
         iconUrl = BTC.iconUrl,
         deltaTextColor = BTC.delta24hColor
     ),
-    ListPresenter.ListCoin(
+    ListCoin(
         symbol = ETH.symbol,
         name = ETH.name,
         price = ETH.priceFormatted,
