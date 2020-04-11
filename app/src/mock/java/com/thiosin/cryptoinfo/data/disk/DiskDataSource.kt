@@ -2,6 +2,7 @@ package com.thiosin.cryptoinfo.data.disk
 
 import com.thiosin.cryptoinfo.data.common.DOMAIN_COINS
 import com.thiosin.cryptoinfo.domain.models.DomainCoin
+import java.util.*
 import javax.inject.Inject
 
 @Suppress("UNUSED_PARAMETER")
@@ -12,7 +13,11 @@ class DiskDataSource @Inject constructor() {
     }
 
     fun getAllCoinsBySymbol(symbol: String): List<DomainCoin> {
-        return DOMAIN_COINS.filter { it.symbol == symbol }
+        return DOMAIN_COINS.filter {
+            it.symbol.toLowerCase(Locale.getDefault()).contains(
+                symbol.toLowerCase(Locale.getDefault())
+            )
+        }
     }
 
     fun updateCoins(coins: List<DomainCoin>) {
