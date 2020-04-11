@@ -1,0 +1,49 @@
+apply plugin: "org.sonarqube"
+
+sonarqube {
+    properties {
+        property "sonar.projectKey", "khongi_crypto-info"
+        property "sonar.projectVersion", "0.4"
+        property "sonar.sources", "app/src/main/java"
+        property "sonar.tests", "app/src/test/java"
+        property "sonar.java.binaries", "app/build/tmp/kotlin-classes/devDebug"
+        property "sonar.java.test.binaries", "app/build/tmp/kotlin-classes/devDebugUnitTest"
+        property "sonar.java.coveragePlugin", "jacoco"
+        property "sonar.coverage.jacoco.xmlReportPaths", "app/build/reports/jacoco/testDevDebugUnitTestCoverage/testDevDebugUnitTestCoverage.xml"
+        property "sonar.sourceEncoding", "UTF-8"
+        property "sonar.android.lint.report", "app/build/reports/lint-results.xml"
+        property "sonar.junit.reportsPath", "app/build/test-results/testDevDebugUnitTest"
+        property "sonar.coverage.exclusion",
+                "**/test/**," +
+                "**/androidTest/**," +
+                "**/*Fragment.*," +
+                "**/*Activity.*," +
+                "**/*Application.*," +
+                "**/models/**," +
+                "**/util/**," +
+                "**/*ViewState.*," +
+                "**/com/thiosin/cryptoinfo/databinding/*," +
+                "**/com/thiosin/cryptoinfo/generated/callback/*," +
+                "**/R.class," +
+                "**/BuildConfig.*," +
+                "**/Manifest*.*," +
+                "**/*Test*.*," +
+                "**/*Dto*.*," +
+                "**/android/databinding/*," +
+                "**/androidx/databinding/*," +
+                "**/di/module/*," +
+                "**/*MapperImpl*.*," +
+                "**/BuildConfig.*," +
+                "**/*Component*.*," +
+                "**/*BR*.*," +
+                "**/Manifest*.*," +
+                "**/*Companion*.*," +
+                "**/*Module.*," +
+                "**/*Dagger*.*," +
+                "**/*MembersInjector*.*," +
+                "**/*Extensions*.*," +
+                "**/InputMethodManagerLeaks.*," +
+                "**/*_Factory*.*," +
+                "**/*_Provide*Factory*.*"
+    }
+}
