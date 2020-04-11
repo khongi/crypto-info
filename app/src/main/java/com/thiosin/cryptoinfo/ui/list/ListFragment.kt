@@ -54,11 +54,12 @@ class ListFragment : NavFragment<ListViewState, ListViewModel, FragmentListBindi
         val searchItem = binding.listToolbar.menu.findItem(R.id.action_search)
         val searchView = (searchItem.actionView) as SearchView
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean = true
-            override fun onQueryTextChange(newText: String?): Boolean {
-                viewModel.search(newText)
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                viewModel.search(query)
                 return true
             }
+
+            override fun onQueryTextChange(newText: String?): Boolean = true
         })
         searchItem.setOnActionExpandListener(object : MenuItem.OnActionExpandListener {
             override fun onMenuItemActionExpand(item: MenuItem?): Boolean = true

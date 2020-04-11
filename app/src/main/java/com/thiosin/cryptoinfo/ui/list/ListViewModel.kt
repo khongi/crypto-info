@@ -21,7 +21,10 @@ class ListViewModel @Inject constructor(
     }
 
     fun search(query: String?) = executeNonBlocking {
-        if (query == null) return@executeNonBlocking
+        if (query == null) {
+            Timber.d("Null query")
+            return@executeNonBlocking
+        }
 
         Timber.d("Searching for $query")
         viewState = ListReady(listPresenter.getCachedCoinsBySymbol(query))
