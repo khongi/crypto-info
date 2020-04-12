@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "15219335757",
+    "firebase_url": "https://cryptoinfo.firebaseio.com",
+    "project_id": "cryptoinfo",
+    "storage_bucket": "cryptoinfo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:15219335757:android:850fbcb5e4aa74e20cb204",
+        "android_client_info": {
+          "package_name": "com.thiosin.cryptoinfo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "15219335757-baivunr7of2f2keub2d2t006e72b2utc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCGM8PJTqCioiI7bEl1NzD0u9q-FqCfdPQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "15219335757-baivunr7of2f2keub2d2t006e72b2utc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
