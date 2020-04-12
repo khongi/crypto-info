@@ -4,6 +4,7 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: "androidx.navigation.safeargs.kotlin"
 apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.crashlytics'
 apply from: "$project.rootDir/jacoco.gradle"
 
 def apikeyPropertiesFile = rootProject.file("apikey.properties")
@@ -131,6 +132,9 @@ dependencies {
 
     // Analytics
     implementation 'com.google.firebase:firebase-analytics:17.3.0'
+
+    // Crashlytics
+    implementation 'com.google.firebase:firebase-crashlytics:17.0.0-beta04'
 
     // Testing
 
