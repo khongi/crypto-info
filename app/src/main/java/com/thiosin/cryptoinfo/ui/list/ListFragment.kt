@@ -12,6 +12,7 @@ import androidx.navigation.ui.setupWithNavController
 import co.zsmb.rainbowcake.dagger.getViewModelFromFactory
 import com.thiosin.cryptoinfo.R
 import com.thiosin.cryptoinfo.databinding.FragmentListBinding
+import com.thiosin.cryptoinfo.ui.list.models.ListCoin
 import com.thiosin.cryptoinfo.ui.util.NavFragment
 import timber.log.Timber
 
@@ -54,11 +55,12 @@ class ListFragment : NavFragment<ListViewState, ListViewModel, FragmentListBindi
         val searchItem = binding.listToolbar.menu.findItem(R.id.action_search)
         val searchView = (searchItem.actionView) as SearchView
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean = true
-            override fun onQueryTextChange(newText: String?): Boolean {
-                viewModel.search(newText)
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                viewModel.search(query)
                 return true
             }
+
+            override fun onQueryTextChange(newText: String?): Boolean = true
         })
         searchItem.setOnActionExpandListener(object : MenuItem.OnActionExpandListener {
             override fun onMenuItemActionExpand(item: MenuItem?): Boolean = true
@@ -84,7 +86,7 @@ class ListFragment : NavFragment<ListViewState, ListViewModel, FragmentListBindi
         }
     }
 
-    override fun onCoinClicked(coin: ListPresenter.ListCoin) {
+    override fun onCoinClicked(coin: ListCoin) {
         navigator.navigate(
             ListFragmentDirections.actionListFragmentToDetailsFragment(
                 symbol = coin.symbol,
