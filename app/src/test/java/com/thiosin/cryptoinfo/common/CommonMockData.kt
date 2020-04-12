@@ -3,6 +3,8 @@ package com.thiosin.cryptoinfo.common
 import com.thiosin.cryptoinfo.domain.models.DomainCoin
 import com.thiosin.cryptoinfo.domain.models.GetCoinDto
 import com.thiosin.cryptoinfo.domain.models.GetCoinsDto
+import com.thiosin.cryptoinfo.ui.details.models.DetailsCoin
+import com.thiosin.cryptoinfo.ui.details.models.DetailsCoinDelta
 import com.thiosin.cryptoinfo.ui.list.models.ListCoin
 
 object BTC {
@@ -12,11 +14,18 @@ object BTC {
     const val priceFormatted = "7312.0701 $"
     const val rank = 1
     const val delta1h = -0.19
+    const val delta1hFormatted = "$delta1h"
+    const val delta1hColor = 1
+    const val delta1hImage = 1
     const val delta24h = -0.53
     const val delta24hFormatted = "$delta24h"
     const val delta24hColor = 1
-    const val iconUrl = "https://assets.coinlayer.com/icons/BTC.png"
+    const val delta24hImage = 1
     const val delta7d = 15.68
+    const val delta7dFormatted = "$delta7d"
+    const val delta7dColor = 1
+    const val delta7dImage = 1
+    const val iconUrl = "https://assets.coinlayer.com/icons/BTC.png"
     const val low24h = 7114.7503569226
     const val high24h = 7428.0425412873
 }
@@ -28,10 +37,17 @@ object ETH {
     const val priceFormatted = "170.0376 $"
     const val rank = 2
     const val delta1h = -0.56
+    const val delta1hFormatted = "$delta1h"
+    const val delta1hColor = 2
+    const val delta1hImage = 2
     const val delta24h = -1.58
     const val delta24hFormatted = "$delta24h"
     const val delta24hColor = 2
+    const val delta24hImage = 2
     const val delta7d = 27.52
+    const val delta7dFormatted = "$delta7d"
+    const val delta7dColor = 2
+    const val delta7dImage = 2
     const val low24h = 163.3306438671
     const val high24h = 174.8423532766
     const val iconUrl = "https://assets.coinlayer.com/icons/ETH.png"
@@ -115,3 +131,29 @@ val PRESENTER_LIST_COINS = listOf(
         deltaTextColor = ETH.delta24hColor
     )
 )
+
+val PRESENTER_DETAILS_COIN =
+    DetailsCoin(
+        symbol = BTC.symbol,
+        name = BTC.name,
+        price = BTC.priceFormatted,
+        rank = "${BTC.rank}",
+        delta1h = DetailsCoinDelta(
+            BTC.delta1hFormatted,
+            BTC.delta1hColor,
+            BTC.delta1hImage
+        ),
+        delta24h = DetailsCoinDelta(
+            BTC.delta24hFormatted,
+            BTC.delta24hColor,
+            BTC.delta24hImage
+        ),
+        delta7d = DetailsCoinDelta(
+            BTC.delta7dFormatted,
+            BTC.delta7dColor,
+            BTC.delta7dImage
+        ),
+        low24h = "${BTC.low24h} $",
+        high24h = "${BTC.high24h} $",
+        iconUrl = BTC.iconUrl
+    )
