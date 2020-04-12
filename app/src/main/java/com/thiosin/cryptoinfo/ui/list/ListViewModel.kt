@@ -9,24 +9,29 @@ class ListViewModel @Inject constructor(
 ) : JobViewModel<ListViewState>(Loading) {
 
     fun load() = execute {
+        Timber.d("Loading")
         viewState = ListReady(listPresenter.getCachedCoins())
         viewState = ListReady(listPresenter.getRefreshedCoins())
     }
 
     fun refresh() = execute {
+        Timber.d("Refreshing")
         viewState = Loading
         viewState = ListReady(listPresenter.getRefreshedCoins())
     }
 
     fun search(query: String?) = executeNonBlocking {
-        if (query == null) return@executeNonBlocking
+        if (query == null) {
+            Timber.d("Null query")
+            return@executeNonBlocking
+        }
 
         Timber.d("Searching for $query")
         viewState = ListReady(listPresenter.getCachedCoinsBySymbol(query))
     }
 
     fun clearSearch() = executeNonBlocking {
-        Timber.d("Loading from cache")
+        Timber.d("Clearing Search")
         viewState = Loading
         viewState = ListReady(listPresenter.getCachedCoins())
     }

@@ -14,89 +14,13 @@ package com.thiosin.cryptoinfo.data.network.coinlib.models
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
-/**
- *
- * @param symbol
- * @param showSymbol
- * @param name
- * @param rank
- * @param price
- * @param marketCap
- * @param totalVolume24h
- * @param low24h
- * @param high24h
- * @param delta1h
- * @param delta24h
- * @param delta7d
- * @param delta30d
- * @param markets
- * @param lastUpdatedTimestamp
- * @param remaining
- */
 @JsonClass(generateAdapter = true)
 data class CoinLibCoinApiResponse(
     @Json(name = "symbol") val symbol: String,
-    @Json(name = "show_symbol") val showSymbol: String,
-    @Json(name = "name") val name: String,
-    @Json(name = "rank") val rank: Int,
     @Json(name = "price") val price: String,
-    @Json(name = "market_cap") val marketCap: String,
-    @Json(name = "total_volume_24h") val totalVolume24h: String,
     @Json(name = "low_24h") val low24h: String,
     @Json(name = "high_24h") val high24h: String,
     @Json(name = "delta_1h") val delta1h: String,
     @Json(name = "delta_24h") val delta24h: String,
-    @Json(name = "delta_7d") val delta7d: String,
-    @Json(name = "delta_30d") val delta30d: String,
-    @Json(name = "markets") val markets: Array<CoinLibMarket>,
-    @Json(name = "last_updated_timestamp") val lastUpdatedTimestamp: Long,
-    @Json(name = "remaining") val remaining: Int
-) {
-
-    override fun equals(other: Any?): Boolean {
-        if (this === other) return true
-        if (javaClass != other?.javaClass) return false
-
-        other as CoinLibCoinApiResponse
-
-        if (symbol != other.symbol) return false
-        if (showSymbol != other.showSymbol) return false
-        if (name != other.name) return false
-        if (rank != other.rank) return false
-        if (price != other.price) return false
-        if (marketCap != other.marketCap) return false
-        if (totalVolume24h != other.totalVolume24h) return false
-        if (low24h != other.low24h) return false
-        if (high24h != other.high24h) return false
-        if (delta1h != other.delta1h) return false
-        if (delta24h != other.delta24h) return false
-        if (delta7d != other.delta7d) return false
-        if (delta30d != other.delta30d) return false
-        if (!markets.contentEquals(other.markets)) return false
-        if (lastUpdatedTimestamp != other.lastUpdatedTimestamp) return false
-        if (remaining != other.remaining) return false
-
-        return true
-    }
-
-    override fun hashCode(): Int {
-        var result = symbol.hashCode()
-        result = 31 * result + showSymbol.hashCode()
-        result = 31 * result + name.hashCode()
-        result = 31 * result + rank
-        result = 31 * result + price.hashCode()
-        result = 31 * result + marketCap.hashCode()
-        result = 31 * result + totalVolume24h.hashCode()
-        result = 31 * result + low24h.hashCode()
-        result = 31 * result + high24h.hashCode()
-        result = 31 * result + delta1h.hashCode()
-        result = 31 * result + delta24h.hashCode()
-        result = 31 * result + delta7d.hashCode()
-        result = 31 * result + delta30d.hashCode()
-        result = 31 * result + markets.contentHashCode()
-        result = 31 * result + lastUpdatedTimestamp.hashCode()
-        result = 31 * result + remaining
-        return result
-    }
-
-}
+    @Json(name = "delta_7d") val delta7d: String
+)

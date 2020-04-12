@@ -3,6 +3,7 @@ package com.thiosin.cryptoinfo.ui.list
 import co.zsmb.rainbowcake.withIOContext
 import com.thiosin.cryptoinfo.domain.interactors.CoinInteractor
 import com.thiosin.cryptoinfo.domain.models.DomainCoin
+import com.thiosin.cryptoinfo.ui.list.models.ListCoin
 import com.thiosin.cryptoinfo.ui.util.CommonValueFormatter
 import javax.inject.Inject
 
@@ -26,20 +27,10 @@ class ListPresenter @Inject constructor(
         coins.map { it.toListCoin(commonValueFormatter) }
     }
 
-    data class ListCoin(
-        val symbol: String,
-        val name: String,
-        val price: String,
-        val rank: String,
-        val delta24h: String,
-        val iconUrl: String,
-        val deltaTextColor: Int
-    )
-
 }
 
-private fun DomainCoin.toListCoin(formatter: CommonValueFormatter): ListPresenter.ListCoin {
-    return ListPresenter.ListCoin(
+private fun DomainCoin.toListCoin(formatter: CommonValueFormatter): ListCoin {
+    return ListCoin(
         symbol = symbol,
         name = name,
         price = formatter.formatPrice(price),

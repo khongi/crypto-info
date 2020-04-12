@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.thiosin.cryptoinfo.R
 import com.thiosin.cryptoinfo.ui.list.CoinAdapter.CoinViewHolder
-import com.thiosin.cryptoinfo.ui.list.ListPresenter.ListCoin
+import com.thiosin.cryptoinfo.ui.list.models.ListCoin
 import kotlinx.android.synthetic.main.item_coin.view.*
 
 class CoinAdapter : ListAdapter<ListCoin, CoinViewHolder>(CoinComparator) {

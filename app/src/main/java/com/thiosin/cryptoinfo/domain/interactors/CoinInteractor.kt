@@ -59,9 +59,9 @@ class CoinInteractor @Inject constructor(
     }
 
     suspend fun getNetworkCoin(symbol: String): DomainCoin? {
-        val cachedCoin = getCachedCoin(symbol)
         return when (val response = networkDataSource.getCoin(symbol)) {
             is NetworkResult -> {
+                val cachedCoin = getCachedCoin(symbol)
                 val newCoinDto = response.result
                 val newCoin = cachedCoin.copy(
                     price = newCoinDto.price,
