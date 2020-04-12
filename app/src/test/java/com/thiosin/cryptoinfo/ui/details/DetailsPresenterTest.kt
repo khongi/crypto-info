@@ -49,4 +49,16 @@ class DetailsPresenterTest {
 
         coVerify { coinInteractor.getNetworkCoin(BTC.symbol) }
     }
+
+    @Test
+    fun `getCachedCoin returns null for missing delta information`() = runBlocking {
+        every { coinInteractor.getCachedCoin(any()) } returns DOMAIN_COINS[0].copy(
+            delta1h = null, delta7d = null
+        )
+
+        val coin = detailsPresenter.getCachedCoin(BTC.symbol)
+
+        assertThat(coin.delta1h).isNull()
+        assertThat(coin.delta7d).isNull()
+    }
 }
