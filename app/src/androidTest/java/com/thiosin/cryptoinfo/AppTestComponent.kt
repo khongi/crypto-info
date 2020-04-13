@@ -1,9 +1,13 @@
-package com.thiosin.cryptoinfo.di
+package com.thiosin.cryptoinfo
 
-import co.zsmb.rainbowcake.dagger.RainbowCakeComponent
 import co.zsmb.rainbowcake.dagger.RainbowCakeModule
 import com.thiosin.cryptoinfo.data.disk.DiskModule
 import com.thiosin.cryptoinfo.data.network.NetworkModule
+import com.thiosin.cryptoinfo.di.AppComponent
+import com.thiosin.cryptoinfo.di.ApplicationModule
+import com.thiosin.cryptoinfo.di.ViewModelModule
+import com.thiosin.cryptoinfo.ui.details.DetailsTest
+import com.thiosin.cryptoinfo.ui.list.ListTest
 import dagger.Component
 import javax.inject.Singleton
 
@@ -17,4 +21,10 @@ import javax.inject.Singleton
         DiskModule::class
     ]
 )
-interface AppComponent : RainbowCakeComponent
+interface AppTestComponent : AppComponent {
+
+    fun inject(listTest: ListTest)
+
+    fun inject(detailsTest: DetailsTest)
+
+}
