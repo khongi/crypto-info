@@ -5,15 +5,19 @@ import co.zsmb.rainbowcake.config.rainbowCake
 import co.zsmb.rainbowcake.dagger.RainbowCakeApplication
 import co.zsmb.rainbowcake.timber.TIMBER
 import com.thiosin.cryptoinfo.di.AppComponent
+import com.thiosin.cryptoinfo.di.ApplicationModule
 import com.thiosin.cryptoinfo.di.DaggerAppComponent
 import timber.log.Timber
 
-class CryptoInfoApplication : RainbowCakeApplication() {
+open class CryptoInfoApplication : RainbowCakeApplication() {
 
     override lateinit var injector: AppComponent
 
     override fun setupInjector() {
-        injector = DaggerAppComponent.factory().create(this)
+        injector = DaggerAppComponent
+            .builder()
+            .applicationModule(ApplicationModule(this))
+            .build()
     }
 
     override fun onCreate() {
