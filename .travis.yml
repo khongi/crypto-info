@@ -18,6 +18,7 @@ android:
   components:
     - tools
     - platform-tools
+    - tools
     # Additional components
     - extra-google-google_play_services
     - extra-google-m2repository
@@ -31,20 +32,21 @@ android:
     # White list all the licenses.
     - '.+'
 
-script:
-  - mv apikey.sample.properties apikey.properties
-  - ./gradlew build check testDevDebugUnitTestCoverage
-  - sonar-scanner
-
 before_install:
   - PATH=${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/platform-tools
+  - export ANDROID_SDK_ROOT=${PATH}
   - touch $HOME/.android/repositories.cfg
-  - yes | sdkmanager "platforms;android-$ANDROID_API_LEVEL"
-  - yes | sdkmanager "build-tools;$ANDROID_BUILD_TOOLS_VERSION"
+  - yes | sdkmanager "platforms;android-${ANDROID_API_LEVEL}"
+  - yes | sdkmanager "build-tools;${ANDROID_BUILD_TOOLS_VERSION}"
 
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
   - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+
+script:
+  - mv apikey.sample.properties apikey.properties
+  - ./gradlew build check testDevDebugUnitTestCoverage
+  - sonar-scanner
 
 cache:
   directories:
