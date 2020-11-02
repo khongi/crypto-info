@@ -45,7 +45,7 @@ before_cache:
 
 script:
   - mv apikey.sample.properties apikey.properties
-  - ./gradlew assembleDevDebug lintDevDebug testDevDebugUnitTestCoverage
+  - ./gradlew assembleDevDebug testDevDebugUnitTestCoverage lintDevDebug detektDevDebug
   - sonar-scanner
 
 cache:
