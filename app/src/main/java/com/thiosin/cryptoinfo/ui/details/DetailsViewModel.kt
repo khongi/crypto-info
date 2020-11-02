@@ -1,11 +1,11 @@
 package com.thiosin.cryptoinfo.ui.details
 
-import co.zsmb.rainbowcake.base.JobViewModel
+import co.zsmb.rainbowcake.base.RainbowCakeViewModel
 import javax.inject.Inject
 
 class DetailsViewModel @Inject constructor(
     private val detailsPresenter: DetailsPresenter
-) : JobViewModel<DetailsViewState>(Loading) {
+) : RainbowCakeViewModel<DetailsViewState>(Loading) {
 
     fun load(symbol: String) = execute {
         viewState = DetailsReady(detailsPresenter.getCachedCoin(symbol))

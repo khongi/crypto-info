@@ -66,9 +66,8 @@ android {
 dependencies {
 
     // Rainbow Cake
-    def rainbow_cake_version = '0.5.0'
+    def rainbow_cake_version = '1.2.0'
     implementation "co.zsmb:rainbow-cake-core:$rainbow_cake_version"
-    implementation "co.zsmb:rainbow-cake-channels:$rainbow_cake_version"
     implementation "co.zsmb:rainbow-cake-dagger:$rainbow_cake_version"
     implementation "co.zsmb:rainbow-cake-timber:$rainbow_cake_version"
 

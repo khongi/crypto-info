@@ -1,12 +1,12 @@
 package com.thiosin.cryptoinfo.ui.list
 
-import co.zsmb.rainbowcake.base.JobViewModel
+import co.zsmb.rainbowcake.base.RainbowCakeViewModel
 import timber.log.Timber
 import javax.inject.Inject
 
 class ListViewModel @Inject constructor(
     private val listPresenter: ListPresenter
-) : JobViewModel<ListViewState>(Loading) {
+) : RainbowCakeViewModel<ListViewState>(Loading) {
 
     fun load() = execute {
         Timber.d("Loading")
