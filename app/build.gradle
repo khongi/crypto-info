@@ -84,7 +84,7 @@ detekt {
             destination = file("build/reports/detekt.xml")
         }
         html {
-            enabled = true
+            enabled = false
             destination = file("build/reports/detekt.html")
         }
         txt {

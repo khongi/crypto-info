@@ -45,7 +45,7 @@ before_cache:
 
 script:
   - mv apikey.sample.properties apikey.properties
-  - ./gradlew assembleDevDebug testDevDebugUnitTestCoverage lintDevDebug detektDevDebug
+  - ./gradlew assembleDevDebug testDevDebugUnitTestCoverage lintDevDebug detekt
   - export JAVA_HOME=$HOME/oraclejdk11
   - chmod +x $TRAVIS_BUILD_DIR/ci/install-jdk.sh
   - $TRAVIS_BUILD_DIR/ci/install-jdk.sh --target $JAVA_HOME --workspace "/home/travis/.cache/install-jdk" --feature "11" --license "BCL"
