@@ -5,6 +5,7 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: "androidx.navigation.safeargs.kotlin"
 apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.google.firebase.crashlytics'
+apply plugin: 'io.gitlab.arturbosch.detekt'
 apply from: "$project.rootDir/jacoco.gradle"
 
 def apikeyPropertiesFile = rootProject.file("apikey.properties")
@@ -61,6 +62,37 @@ android {
             dimension environment
         }
     }
+}
+
+detekt {
+    input = files(
+            "src/main/java"
+    )
+    config = files("$projectDir/detekt/detekt.yml")
+//    baseline = file("$projectDir/detekt/baseline.xml")
+
+    buildUponDefaultConfig = false
+    disableDefaultRuleSets = false
+    debug = false
+    ignoreFailures = false
+    ignoredBuildTypes = ["release"]
+    ignoredFlavors = ["mock"]
+    ignoredVariants = ["mockDebug"]
+    reports {
+        xml {
+            enabled = true
+            destination = file("build/reports/detekt.xml")
+        }
+        html {
+            enabled = false
+            destination = file("build/reports/detekt.html")
+        }
+        txt {
+            enabled = false
+            destination = file("build/reports/detekt.txt")
+        }
+    }
+    autoCorrect = false
 }
 
 dependencies {
