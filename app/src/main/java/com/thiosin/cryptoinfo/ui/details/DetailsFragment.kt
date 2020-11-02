@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import co.zsmb.rainbowcake.dagger.getViewModelFromFactory
@@ -15,6 +16,8 @@ import com.thiosin.cryptoinfo.ui.util.NavFragment
 import timber.log.Timber
 
 class DetailsFragment : NavFragment<DetailsViewState, DetailsViewModel, FragmentDetailsBinding>() {
+
+    private val args: DetailsFragmentArgs by navArgs()
 
     override fun provideViewModel() = getViewModelFromFactory()
     override fun inflateViewBinding(
@@ -39,7 +42,7 @@ class DetailsFragment : NavFragment<DetailsViewState, DetailsViewModel, Fragment
     override fun onStart() {
         super.onStart()
 
-        viewModel.load(arguments!!.getString("symbol")!!)
+        viewModel.load(args.symbol)
     }
 
     override fun render(viewState: DetailsViewState) {
