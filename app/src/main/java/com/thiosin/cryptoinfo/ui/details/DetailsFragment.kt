@@ -42,7 +42,8 @@ class DetailsFragment : NavFragment<DetailsViewState, DetailsViewModel, Fragment
     override fun onStart() {
         super.onStart()
 
-        viewModel.load(args.symbol)
+        val symbol = arguments!!.getString("symbol")
+        viewModel.load(symbol.toString())
     }
 
     override fun render(viewState: DetailsViewState) {
