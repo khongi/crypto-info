@@ -45,7 +45,7 @@ before_cache:
 
 script:
   - mv apikey.sample.properties apikey.properties
-  - ./gradlew build check testDevDebugUnitTestCoverage
+  - ./gradlew assembleDevDebug lintDevDebug testDevDebugUnitTestCoverage
   - sonar-scanner
 
 cache:
