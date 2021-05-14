@@ -1,7 +1,10 @@
 package com.thiosin.cryptoinfo.ui.details
 
-import co.zsmb.rainbowcake.test.*
+import co.zsmb.rainbowcake.test.assertDidObserve
+import co.zsmb.rainbowcake.test.assertObserved
+import co.zsmb.rainbowcake.test.assertObservedLast
 import co.zsmb.rainbowcake.test.base.ViewModelTest
+import co.zsmb.rainbowcake.test.observeStateAndEvents
 import com.thiosin.cryptoinfo.common.BTC
 import com.thiosin.cryptoinfo.common.PRESENTER_DETAILS_COIN
 import io.mockk.*
@@ -71,9 +74,6 @@ class DetailsViewModelTest : ViewModelTest() {
     @Test
     fun `refresh returns if view state is not ready`() = runBlocking {
         detailsViewModel.observeStateAndEvents { stateObserver, _ ->
-            stateObserver.reset()
-            stateObserver.observed.add(Loading)
-
             detailsViewModel.refresh()
 
             stateObserver.assertDidObserve(Loading)
@@ -83,15 +83,35 @@ class DetailsViewModelTest : ViewModelTest() {
     @Test
     fun `refresh retains old state in case of network error`() = runBlocking {
         detailsViewModel.observeStateAndEvents { stateObserver, _ ->
-            val cachedCoin = PRESENTER_DETAILS_COIN
-            stateObserver.observed.add(DetailsReady(cachedCoin))
-            coEvery { detailsPresenter.getNetworkCoin(BTC.symbol) } returns null
+            val cachedCoin = PRESENTER_DETAILS_COIN.copy(name = "cached")
+            val networkCoin = PRESENTER_DETAILS_COIN.copy(name = "network")
+            coEvery { detailsPresenter.getCachedCoin(BTC.symbol) } returns cachedCoin
+            coEvery { detailsPresenter.getNetworkCoin(BTC.symbol) } returns networkCoin andThen null
+            detailsViewModel.load(BTC.symbol)
 
             detailsViewModel.refresh()
 
             coEvery { detailsPresenter.getNetworkCoin(BTC.symbol) }
-            stateObserver.assertObservedLast(DetailsReady(cachedCoin))
+            stateObserver.assertObservedLast(DetailsReady(networkCoin))
         }
     }
 
+    @Test
+    fun `refresh sets ready state with new coin`() = runBlocking {
+        detailsViewModel.observeStateAndEvents { stateObserver, _ ->
+            val cachedCoin = PRESENTER_DETAILS_COIN.copy(name = "cached coin")
+            val oldNetworkCoin = PRESENTER_DETAILS_COIN.copy(name = "old network coin")
+            val newNetworkCoin = PRESENTER_DETAILS_COIN.copy(name = "old network coin")
+            coEvery { detailsPresenter.getCachedCoin(BTC.symbol) } returns cachedCoin
+            coEvery {
+                detailsPresenter.getNetworkCoin(BTC.symbol)
+            } returns oldNetworkCoin andThen newNetworkCoin
+            detailsViewModel.load(BTC.symbol)
+
+            detailsViewModel.refresh()
+
+            coEvery { detailsPresenter.getNetworkCoin(BTC.symbol) }
+            stateObserver.assertObservedLast(DetailsReady(newNetworkCoin))
+        }
+    }
 }
