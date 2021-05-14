@@ -13,11 +13,9 @@ import com.thiosin.cryptoinfo.EspressoTest
 import com.thiosin.cryptoinfo.util.RecyclerViewItemCountAssertion.Companion.withItemCount
 import com.thiosin.cryptoinfo.util.withRecyclerView
 import org.hamcrest.Matchers.not
-import kotlin.reflect.full.primaryConstructor
 
 inline fun <reified R : ScreenRobot<R>> EspressoTest<*>.withRobot(): R {
-    return R::class.primaryConstructor?.call(this)
-        ?: throw InstantiationException("Robot should have a primary constructor that takes an EspressoTest<*> parameter")
+    return R::class.constructors.elementAt(0).call(this)
 }
 
 abstract class ScreenRobot<T : ScreenRobot<T>>(protected val espressoTest: EspressoTest<*>) {
